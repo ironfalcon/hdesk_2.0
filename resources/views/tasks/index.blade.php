@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -24,9 +24,9 @@ form{
                     <tbody>
                     @foreach($tasks as $task)
                     @if($task->status == 'Выдано')
-                        <tr class="table-danger">
+                        <tr class="bg-danger">
                     @else
-                        <tr class="table-success">
+                        <tr class="bg-success">
                     @endif
                             <td class="col-md-1">{{$task->id}}
                             </td>

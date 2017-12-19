@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 @include('errors')
@@ -27,7 +27,7 @@
                <br>
                <button class="btn btn-success">Submit</button>
                </div>
-
+                </form>
                {!! Form::close() !!}
             </div>
         </div>

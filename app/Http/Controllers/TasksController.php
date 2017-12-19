@@ -11,6 +11,11 @@ class TasksController extends Controller
 {
     use ValidatesRequests;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {   
         $tasks = Task::all();
