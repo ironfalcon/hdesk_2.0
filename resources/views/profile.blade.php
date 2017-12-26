@@ -12,6 +12,7 @@
                 <input type="file" name="avatar">
                 <button type="submit" class="pull-right btn btn-sm btn-primary">Загрузить</button>
             </form>
+            <h3>Ваш статус: {{ $user->permission->name}}</h3>
         </div>
     </div>
 </div>
