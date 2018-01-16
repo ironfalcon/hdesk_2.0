@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    //поле по которому будет осуществляться аутентификация
     public function username()
     {
         return 'name';
