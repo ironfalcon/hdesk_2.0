@@ -19,16 +19,19 @@
                         </div>
                     @endif
                     @if(Auth::user()->permission()->value('name') == 'user')
-                        <a href="{{ route('tasks.index') }}">
+                        <a href="{{ route('news.index') }}">
                             <div class="btn btn-success">Новости</div>
                         </a>
                     @elseif(Auth::user()->permission()->value('name') == 'sotr')
-                        <a href="{{ route('tasks.index') }}">
-                            <div class="btn btn-success">Заявки</div>
+                        <a href="{{ route('news.index') }}">
+                            <div class="btn btn-success">Новости</div>
                         </a>
                     @elseif(Auth::user()->permission()->value('name') == 'admin')
                         <a href="{{ route('tasks.index') }}">
                             <div class="btn btn-success">Выдача оборудования</div>
+                        </a>
+                        <a href="{{ route('news.index') }}">
+                            <div class="btn btn-success">Новости</div>
                         </a>
                     @endif
 

@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         //правила для обновления
-        Gate::define('create-post', function (User $user) {
+        Gate::define('isAdmin', function (User $user) {
             if($user->permission()->value('name') == 'admin')
                 return TRUE;
             else

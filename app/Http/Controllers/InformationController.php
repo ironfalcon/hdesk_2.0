@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Information;
 
 class InformationController extends Controller
 {
@@ -13,52 +14,52 @@ class InformationController extends Controller
 
     public function index()
     {   
-        $tasks = Task::all();
-        return view('tasks.index', ['tasks' => $tasks]);
+        $news = Information::all();
+        return view('news.index', ['news' => $news]);
     }
     
     public function create()
     {
-        return view('tasks.create');
+        return view('news.create');
     }
 
-    public function store(createTaskRequest $request)
+    public function store(NesRequest $request)
     {
         
-        Task::create($request->all());
-        return redirect()->route('tasks.index');
+        Information::create($request->all());
+        return redirect()->route('news.index');
     }
 
     public function edit($id)
     {
-        $myTask = Task::find($id);
-        return view('tasks.edit', ['task' => $myTask ]);
+        $myNews = Information::find($id);
+        return view('news.edit', ['news' => $myNews ]);
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'elements' => 'required',
-            'aud' => 'required',
-            'updated_user' => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'photo' => 'required',
             'description' => 'required']);
-            
-        $myTask = Task::find($id);
-        $myTask->fill($request->all());
-        $myTask->save();
-        return redirect()->route('tasks.index');
+
+        $myNews = Information::find($id);
+        $myNews->fill($request->all());
+        $myNews->save();
+        return redirect()->route('news.index');
     }
 
     public function show($id)
     {
-        $myTask = Task::find($id);
-        return view('tasks.show', ['task' => $myTask]);
+        $myNews = Information::find($id);
+        return view('news.show', ['news' => $myNews]);
     }
 
     public function destroy($id)
     {
-        Task::find($id)->delete();
-        return redirect()->route('tasks.index');
+        Information::find($id)->delete();
+        return redirect()->route('news.index');
     }
 }
-}
+

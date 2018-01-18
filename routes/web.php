@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 
 Route::resource('tasks', 'TasksController');
+Route::resource('news', 'InformationController');
 
 Auth::routes();
 Route::get('profile', 'UserController@profile')->name('profile');

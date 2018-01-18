@@ -20,7 +20,7 @@ class TasksController extends Controller
     public function index()
     {   //проверка, может ли пользователь
         // смотреть данный раздел
-        if(Gate::denies('create-post')){
+        if(Gate::denies('isAdmin')){
             return redirect()->back()->with(['message'=>'У вас нет прав']);
         }
 
@@ -30,7 +30,7 @@ class TasksController extends Controller
     
     public function create()
     {
-        if(Gate::denies('create-post')){
+        if(Gate::denies('isAdmin')){
             return redirect()->back();
         }
 
