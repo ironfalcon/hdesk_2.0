@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        //правила для обновления
+        Gate::define('create-post', function (User $user) {
+            if($user->permission()->value('name') == 'admin')
+                return TRUE;
+            else
+                return FALSE;
+        });
 
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Task;
 use App\Http\Requests\createTaskRequest;
 use illuminate\Foundation\Validation\ValidatesRequests;
+use Gate;
 
 class TasksController extends Controller
 {
@@ -17,13 +18,22 @@ class TasksController extends Controller
     }
 
     public function index()
-    {   
+    {   //проверка, может ли пользователь
+        // смотреть данный раздел
+        if(Gate::denies('create-post')){
+            return redirect()->back();
+        }
+
         $tasks = Task::all();
         return view('tasks.index', ['tasks' => $tasks]);
     }
     
     public function create()
     {
+        if(Gate::denies('create-post')){
+            return redirect()->back();
+        }
+
         return view('tasks.create');
     }
 
