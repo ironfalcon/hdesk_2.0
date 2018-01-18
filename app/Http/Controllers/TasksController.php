@@ -21,7 +21,7 @@ class TasksController extends Controller
     {   //проверка, может ли пользователь
         // смотреть данный раздел
         if(Gate::denies('create-post')){
-            return redirect()->back();
+            return redirect()->back()->with(['message'=>'У вас нет прав']);
         }
 
         $tasks = Task::all();

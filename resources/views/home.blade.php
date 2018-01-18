@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     @if(Auth::user()->permission()->value('name') == 'user')
                         <a href="{{ route('tasks.index') }}">
                             <div class="btn btn-success">Новости</div>
