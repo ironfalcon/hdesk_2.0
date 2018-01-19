@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Information;
+use Auth;
+use Image;
 
 class InformationController extends Controller
 {
@@ -23,10 +25,25 @@ class InformationController extends Controller
         return view('news.create');
     }
 
-    public function store(NesRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'photo' => 'required',
+            'description' => 'required']);
         
-        Information::create($request->all());
+         $photo = $request->file('photo');
+        $filename = time() . "." . $photo->getClientOriginalExtension();
+        Image::make($photo)->save( public_path('/uploads/news_photo/' . $filename));  
+        $photo = $filename;  
+        //Information::create($request->all());
+        $news = new Information;
+        $news->title = $request->title;
+        $news->body = $request->body;
+        $news->description = $request->description;
+        $news->photo = $photo;
+        $news->save();
         return redirect()->route('news.index');
     }
 
@@ -60,6 +77,21 @@ class InformationController extends Controller
     {
         Information::find($id)->delete();
         return redirect()->route('news.index');
+    }
+
+    public function update_avatar(Request $request)
+    {
+        
+        
+        $avatar = $request->file('avatar');
+        $filename = time() . "." . $avatar->getClientOriginalExtension();
+        Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename));
+        
+        $user = Auth::user();
+        $user->avatar = $filename;
+        $user->save();
+
+        return view('profile', array('user' => Auth::user()));
     }
 }
 

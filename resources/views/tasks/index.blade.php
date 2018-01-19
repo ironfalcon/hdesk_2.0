@@ -3,7 +3,7 @@
 @section('content')
 
 <style>
-form{
+.cd{
     display:inline;
 }
 </style>

@@ -14,6 +14,42 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
      
    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+   <style>
+form{
+    display:inline;
+}
+.card{
+  height: 300px;
+  width: 200px;
+  border-radius: 5px;
+  background-color: #bec0c4;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card-head img{
+  height: 150px;
+  width: 200px;
+  border-radius: 5px 5px 0 0;
+}
+.card-content{
+  padding-left: 10px;
+  height: 32%;
+}
+#title-card{
+    color: #3d3d3d;
+}
+.news-but{
+    margin-left: 10px;
+}
+
+</style>
 </head>
 <body>
     <div id="app">
