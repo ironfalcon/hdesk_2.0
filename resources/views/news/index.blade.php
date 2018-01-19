@@ -6,7 +6,7 @@
     <div class="container">
         <h3>Новости факультета</h3>
         @if(Auth::user()->permission()->value('name') == 'admin')
-        <a href="{{ route('news.create') }}" class="btn btn-success">Create</a>
+        <a href="{{ route('news.create') }}" class="btn btn-success">Создать</a>
         @endif
         <br>
         <div class="row col-xs-10 col-xs-offset-1"> 

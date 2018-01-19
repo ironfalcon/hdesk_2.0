@@ -33,11 +33,11 @@ class InformationController extends Controller
             'photo' => 'required',
             'description' => 'required']);
         
-         $photo = $request->file('photo');
+        $photo = $request->file('photo');
         $filename = time() . "." . $photo->getClientOriginalExtension();
         Image::make($photo)->save( public_path('/uploads/news_photo/' . $filename));  
         $photo = $filename;  
-        //Information::create($request->all());
+
         $news = new Information;
         $news->title = $request->title;
         $news->body = $request->body;
@@ -61,8 +61,16 @@ class InformationController extends Controller
             'photo' => 'required',
             'description' => 'required']);
 
+        $photo = $request->file('photo');
+        $filename = time() . "." . $photo->getClientOriginalExtension();
+        Image::make($photo)->save( public_path('/uploads/news_photo/' . $filename));  
+        $photo = $filename;  
+
         $myNews = Information::find($id);
-        $myNews->fill($request->all());
+        $myNews->title = $request->title;
+        $myNews->body = $request->body;
+        $myNews->description = $request->description;
+        $myNews->photo = $photo;
         $myNews->save();
         return redirect()->route('news.index');
     }
@@ -79,19 +87,5 @@ class InformationController extends Controller
         return redirect()->route('news.index');
     }
 
-    public function update_avatar(Request $request)
-    {
-        
-        
-        $avatar = $request->file('avatar');
-        $filename = time() . "." . $avatar->getClientOriginalExtension();
-        Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename));
-        
-        $user = Auth::user();
-        $user->avatar = $filename;
-        $user->save();
-
-        return view('profile', array('user' => Auth::user()));
-    }
 }
 
