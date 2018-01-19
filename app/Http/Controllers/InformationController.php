@@ -22,11 +22,17 @@ class InformationController extends Controller
     
     public function create()
     {
+        if(Gate::denies('isAdmin')){
+            return redirect()->back()->with(['message'=>'У вас нет прав']);
+        }
         return view('news.create');
     }
 
     public function store(Request $request)
     {
+        if(Gate::denies('isAdmin')){
+            return redirect()->back()->with(['message'=>'У вас нет прав']);
+        }
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
@@ -49,12 +55,18 @@ class InformationController extends Controller
 
     public function edit($id)
     {
+        if(Gate::denies('isAdmin')){
+            return redirect()->back()->with(['message'=>'У вас нет прав']);
+        }
         $myNews = Information::find($id);
         return view('news.edit', ['news' => $myNews ]);
     }
 
     public function update(Request $request, $id)
     {
+        if(Gate::denies('isAdmin')){
+            return redirect()->back()->with(['message'=>'У вас нет прав']);
+        }
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
