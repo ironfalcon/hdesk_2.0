@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Permission;
 use App\Group;
+use App\Claim;
 
 
 class User extends Authenticatable
@@ -40,5 +41,11 @@ class User extends Authenticatable
     public function permission()
     {
         return $this->belongsTo('App\Permission');
+    }
+
+    //Relationships User =>Claims
+    public function Claim()
+    {
+        return $this->hasMany('App\Claim');
     }
 }

@@ -28,7 +28,6 @@
         </div>
         @endforeach
 
-        <!--{{$new->photo}}-->
 
         </div>
     </div>

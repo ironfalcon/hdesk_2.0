@@ -33,5 +33,19 @@ class AuthServiceProvider extends ServiceProvider
                 return FALSE;
         });
 
+        Gate::define('isSotr', function (User $user) {
+            if($user->permission()->value('name') == 'sotr')
+                return TRUE;
+            else
+                return FALSE;
+        });
+
+        Gate::define('isStud', function (User $user) {
+            if($user->permission()->value('name') == 'stud')
+                return TRUE;
+            else
+                return FALSE;
+        });
+
     }
 }

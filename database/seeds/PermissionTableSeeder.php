@@ -13,7 +13,7 @@ class PermissionTableSeeder extends Seeder
     {
         //
         DB::table('permissions')->insert([
-            'name' => 'user',
+            'name' => 'stud',
         ]);
 
         DB::table('permissions')->insert([

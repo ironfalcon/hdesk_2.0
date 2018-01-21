@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Information;
 use Auth;
 use Image;
+use Gate;
 
 class InformationController extends Controller
 {
