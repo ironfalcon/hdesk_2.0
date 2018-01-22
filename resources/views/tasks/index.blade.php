@@ -9,7 +9,7 @@
 </style>
     <div class="container">
         <h3>Список выданного оборудования</h3>
-        <a href="{{ route('tasks.create') }}" class="btn btn-success">Создать</a>
+        <a href="{{ route('tasks.create') }}" class="btn btn-success" style="float:right;">Создать</a>
         <div class="row">  
             <div class="col-md-8 col-md-offset-2">
                 <table class="table">

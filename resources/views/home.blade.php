@@ -18,7 +18,7 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                    @if(Auth::user()->permission()->value('name') == 'user')
+                    @if(Auth::user()->permission()->value('name') == 'stud')
                         <a href="{{ route('news.index') }}">
                             <div class="btn btn-success">Новости</div>
                         </a>
@@ -26,12 +26,18 @@
                         <a href="{{ route('news.index') }}">
                             <div class="btn btn-success">Новости</div>
                         </a>
+                        <a href="{{ route('claims.index') }}">
+                            <div class="btn btn-success">Отправить заявку</div>
+                        </a>
                     @elseif(Auth::user()->permission()->value('name') == 'admin')
                         <a href="{{ route('tasks.index') }}">
                             <div class="btn btn-success">Выдача оборудования</div>
                         </a>
                         <a href="{{ route('news.index') }}">
                             <div class="btn btn-success">Новости</div>
+                        </a>
+                        <a href="{{ route('claims.index') }}">
+                            <div class="btn btn-success">Просмотр заявок</div>
                         </a>
                     @endif
 

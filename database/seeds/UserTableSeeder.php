@@ -41,6 +41,17 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'name' => 'sotr2',
+            'permission_id' => 2,
+            'email' => str_random(3).'@gmail.com',
+            'password' => bcrypt(123456),
+            'phone' => 9873613478,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+
+        ]);
+
+        DB::table('users')->insert([
             'name' => 'admin',
             'permission_id' => 3,
             'email' => str_random(3).'@gmail.com',

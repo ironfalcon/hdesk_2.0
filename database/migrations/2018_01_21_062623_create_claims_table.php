@@ -19,7 +19,7 @@ class CreateClaimsTable extends Migration
             $table->string('author');
             $table->string('desired_date');
             $table->string('place');
-            $table->string('status');
+            $table->string('status')->default('Не просмотрен');
             $table->timestamps();
         });
     }

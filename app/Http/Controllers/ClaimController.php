@@ -4,31 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gate;
+use App\Claim;
+use Illuminate\Support\Facades\Auth;
+
 
 class ClaimController extends Controller
 {
     public function index()
     {   //проверка, может ли пользователь
         // смотреть данный раздел
-        if(Gate::denies('isStud')){
+
+        if(Gate::allows('isAdmin')){
+            $claims = Claim::all();
+            return view('claims.index', ['claims' => $claims]);
+        }
+        if(Gate::allows('isSotr')){
+            $claims = Claim::where('author', Auth::user()->name)->get();
+            return view('claims.index', ['claims' => $claims]);
+        }
+        if(Gate::allows('isStud')){
             return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
         }
 
-        if(Gate::denies('isSotr')){
-            $claims = Claim::
-        }
-
-        if(Gate::denies('isAdmin')){
-            return redirect()->back()->with(['message'=>'У вас нет прав']);
-        }
-
-        $claims = Claim::all();
-        return view('claims.index', ['claims' => $claims]);
     }
 
     public function create()
     {
-        if(Gate::denies('isAdmin')){
+        if(Gate::denies('isSotr')){
             return redirect()->back();
         }
 
