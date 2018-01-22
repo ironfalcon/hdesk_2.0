@@ -4,12 +4,12 @@
 @include('errors')
 
     <div class="container">
-        <h3>Create tasks</h3>
+        <h3>Создание заявки</h3>
 
         <div class="row">
             <div class="col-md-12">
                
-               {!! Form::open(['route' => ['tasks.store']]) !!}
+               {!! Form::open(['route' => ['claims.store']]) !!}
                <div class="form-group">
                 Оборудование
                <input type="text" class="form-control" name="elements" value="{{ old('element')}}">

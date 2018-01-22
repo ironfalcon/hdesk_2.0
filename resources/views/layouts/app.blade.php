@@ -23,7 +23,7 @@ form{
   height: 300px;
   width: 200px;
   border-radius: 5px;
-  background-color: #bec0c4;
+  background-color: #ecf0f1;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   float: left;
@@ -51,9 +51,9 @@ form{
 
 </style>
 </head>
-<body>
+<body style="background-color: #ecf0f1;">
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="background-color: #3498db;">
             <div class="container">
                 <div class="navbar-header">
 
@@ -66,7 +66,7 @@ form{
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}" style="color:black;">
                         {{ config('app.name', 'H-desk') }}
                     </a>
                 </div>
@@ -81,12 +81,12 @@ form{
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}" style="color:black;">Login</a></li>
+                            <li><a href="{{ route('register') }}" style="color:black;">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="position:relative; padding-left:50px;">
-                                    <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style=" width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%;">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="position:relative; padding-left:50px; color:black;">
+                                    <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style=" width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%; color:black;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
