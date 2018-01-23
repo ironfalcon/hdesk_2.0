@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Permission;
 use App\Group;
 use App\Claim;
+use App\Message;
+
 
 
 class User extends Authenticatable
@@ -40,12 +42,17 @@ class User extends Authenticatable
     // Relationships User => Permission
     public function permission()
     {
-        return $this->belongsTo('App\Permission');
+    return $this->belongsTo('App\Permission');
     }
 
     //Relationships User =>Claims
     public function Claim()
     {
         return $this->hasMany('App\Claim');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message','from_user_id');
     }
 }
