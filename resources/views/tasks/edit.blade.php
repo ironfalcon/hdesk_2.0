@@ -7,37 +7,34 @@
         <h3>Изменеие записи # {{$task->id}}</h3>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-10 col-xs-offset-1">
                
                {!! Form::open(['route' => ['tasks.update', $task->id], 'method' => 'PUT']) !!}
                 
                 <div class="form-group">
-                Оборудование
-               <input type="text" class="form-control" name="elements" value="{{ $task->elements}}">
-               <br>
-                Аудитория
-               <input type="text" class="form-control" name="aud" value="{{ $task->aud}}">
-               <br>
-                Фамилия
-               <input type="text" class="form-control" name="updated_user" value="{{ Auth::user()->name}}">
-               <br>
-                Описание
-               <textarea name="description" id="" cols="30" rows="5" class="form-control">
-               {{ $task->description}}
-               </textarea>
+                    <label for="elements">Оборудование:</label>
+                    <input type="text" class="form-control" id="elements" name="elements" value="{{ $task->elements}}">
                 <br>
-                Статус
+                    <label for="aud">Аудитория:</label>
+                    <input type="text" class="form-control" id="aud" name="aud" value="{{ $task->aud}}">
+
+                    <input type="hidden" class="form-control" name="updated_user" value="{{ Auth::user()->name}}">
                 <br>
-                <select name="status">
+                    <label for="description">Описание:</label>
+                <textarea name="description" id="description" rows="5" class="form-control">{{ $task->description}}</textarea>
+                <br>
+                    <label for="status">Статус:</label>
+                <br>
+                <select name="status" id="status">
                     <option selected value="Выдано">Выдано</option>
                     <option value="Забрали">Забрали</option>
                 </select>
-               <br>
-               <br>
-               <button class="btn btn-success">Submit</button>
-               </div>
+                <br>
+                <br>
+                <button class="btn btn-success">Подтвердить</button>
+                </div>
 
-               {!! Form::close() !!}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

@@ -4,32 +4,28 @@
 @include('errors')
 
     <div class="container">
-        <h3>Create tasks</h3>
+        <h3>Выдаваемое оборудование</h3>
 
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row col-xs-10 col-xs-offset-1">
+
                
                {!! Form::open(['route' => ['tasks.store']]) !!}
                <div class="form-group">
-                Оборудование
-               <input type="text" class="form-control" name="elements" value="{{ old('element')}}">
+                   <label for="elements">Оборудование:</label>
+                   <input type="text" class="form-control" id="elements" name="elements" value="{{ old('element')}}">
                <br>
-                Аудитория
-               <input type="text" class="form-control" name="aud" value="{{ old('aud')}}">
+                   <label for="aud">Аудитория:</label>
+                   <input type="text" class="form-control" id="aud" name="aud" value="{{ old('aud')}}">
+
+                    <input type="hidden" class="form-control" name="created_user" value="{{ Auth::user()->name }}">
                <br>
-                Фамилия
-               <input type="text" class="form-control" name="created_user" value="{{ Auth::user()->name }}">
+                   <label for="description">Описание:</label>
+                   <textarea name="description" id="description"  rows="5" class="form-control">{{old('description')}}</textarea>
                <br>
-                Описание
-               <textarea name="description" id="" cols="30" rows="5" class="form-control">
-               {{old('description')}}
-               </textarea>
-               <br>
-               <button class="btn btn-success">Submit</button>
+               <button class="btn btn-success">Подтвердить</button>
                </div>
-                </form>
                {!! Form::close() !!}
-            </div>
+
         </div>
     </div>
 
