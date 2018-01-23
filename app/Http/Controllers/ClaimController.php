@@ -30,15 +30,28 @@ class ClaimController extends Controller
 
     public function create()
     {
-        if(Gate::denies('isSotr')){
-            return redirect()->back();
+        if(Gate::allows('isSotr')){
+            return view('claims.create');
         }
-
-        return view('claims.create');
+        if(Gate::allows('isAdmin')){
+            return view('claims.create');
+        }
+        if(Gate::allows('isStud')){
+            return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
+        }
     }
 
-    public function store(createTaskRequest $request)
+    public function store(Request $request)
     {
+        if(Gate::allows('isStud')){
+            return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
+        }
+
+        $this->validate($request, [
+            'body' => 'required',
+            'author' => 'required',
+            'desired_date' => 'required',
+            'place' => 'required']);
 
         Claim::create($request->all());
         return redirect()->route('claims.index');
@@ -46,6 +59,13 @@ class ClaimController extends Controller
 
     public function edit($id)
     {
+        if(Gate::allows('isStud')){
+            return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
+        }
+        if(Gate::allows('isSotr')){
+            return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
+        }
+
         $myClaim = Claim::find($id);
         return view('claims.edit', ['claim' => $myClaim ]);
     }
@@ -61,17 +81,24 @@ class ClaimController extends Controller
         $myClaim = Claim::find($id);
         $myClaim->fill($request->all());
         $myClaim->save();
-        return redirect()->route('claim.index');
+        return redirect()->route('claims.index');
     }
 
     public function show($id)
     {
+        if(Gate::allows('isStud')){
+            return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
+        }
+
         $myClaim = Claim::find($id);
         return view('claims.show', ['claim' => $myClaim]);
     }
 
     public function destroy($id)
     {
+        if(Gate::allows('isStud')){
+            return redirect()->back()->with(['message'=>'У вас нет прав на просмотр']);
+        }
         Claim::find($id)->delete();
         return redirect()->route('claim.index');
     }

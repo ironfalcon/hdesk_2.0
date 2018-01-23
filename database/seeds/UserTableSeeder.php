@@ -30,6 +30,54 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'name' => 'user1',
+            'group_id' => Group::where('name', 'б1ИФСТ-41')->value('id'),
+            'permission_id' => 1,
+            'email' => str_random(3).'@gmail.com',
+            'password' => bcrypt(123456),
+            'phone' => 9871614549,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'user2',
+            'group_id' => Group::where('name', 'б1ИФСТ-41')->value('id'),
+            'permission_id' => 1,
+            'email' => str_random(3).'@gmail.com',
+            'password' => bcrypt(123456),
+            'phone' => 9871618549,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'user3',
+            'group_id' => Group::where('name', 'б1ИВЧТ-41')->value('id'),
+            'permission_id' => 1,
+            'email' => str_random(3).'@gmail.com',
+            'password' => bcrypt(123456),
+            'phone' => 9871635549,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'user4',
+            'group_id' => Group::where('name', 'б1ИВЧТ-41')->value('id'),
+            'permission_id' => 1,
+            'email' => str_random(3).'@gmail.com',
+            'password' => bcrypt(123456),
+            'phone' => 9871448549,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+
+        ]);
+
+        DB::table('users')->insert([
             'name' => 'sotr',
             'permission_id' => 2,
             'email' => str_random(3).'@gmail.com',
