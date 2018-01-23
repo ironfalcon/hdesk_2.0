@@ -71,6 +71,17 @@
                                 {!! Form::close() !!}
                                 
                             </td>
+                            @elseif(Auth::user()->permission()->value('name') == 'sotr')
+                                <td class="col-md-2">
+                                    <a href="{{ route('claims.show', $claim->id) }}">
+                                        <button class="btn btn-success">Просмотр</button>
+                                    </a>
+
+                                    {!! Form::open(['method' => 'DELETE', 'route' => ['claims.destroy', $claim->id] ])!!}
+                                    <button class="btn btn-danger cd" onclick="return confirm('Вы уверены?')">Удалить</button>
+                                    {!! Form::close() !!}
+
+                                </td>
                             @endif
                         </tr>
                     @endforeach

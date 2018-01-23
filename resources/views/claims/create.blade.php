@@ -5,32 +5,27 @@
 
     <div class="container">
         <h3>Создание заявки</h3>
-
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row col-xs-10 col-xs-offset-1">
                
                {!! Form::open(['route' => ['claims.store']]) !!}
                <div class="form-group">
-                Оборудование
-               <input type="text" class="form-control" name="elements" value="{{ old('element')}}">
+                   <label for="body">Текст заявки:</label>
+                   <textarea class="form-control" rows="5" name="body" id="body">{{ old('body')}}</textarea>
                <br>
-                Аудитория
-               <input type="text" class="form-control" name="aud" value="{{ old('aud')}}">
+                   <label for="place">Место размещения:</label>
+                   <input type="text" class="form-control" name="place" id="place" value="{{ old('place')}}">
                <br>
-                Фамилия
-               <input type="text" class="form-control" name="created_user" value="{{ Auth::user()->name }}">
+                   <label for="date">Желаемая дата выполнения:</label><br>
+                   <input id="date" type="date" name="desired_date">
+                   <input type="hidden" name="author" value="{{ Auth::user()->name }}">
                <br>
-                Описание
-               <textarea name="description" id="" cols="30" rows="5" class="form-control">
-               {{old('description')}}
-               </textarea>
                <br>
-               <button class="btn btn-success">Submit</button>
+               <button class="btn btn-success">Отправить</button>
                </div>
                 </form>
                {!! Form::close() !!}
-            </div>
         </div>
     </div>
 
 @endsection('content')
+
