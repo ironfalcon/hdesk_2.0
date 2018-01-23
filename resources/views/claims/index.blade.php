@@ -17,7 +17,7 @@
         @endif
 
         <div class="row">  
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-10 col-xs-offset-1">
                 <table class="table">
                     <thead>
                         <tr>
@@ -36,26 +36,26 @@
                     @else
                         <tr class="bg-success">
                     @endif
-                            <td class="col-md-1">
+                            <td class="col-xs-1">
                                 {{$claim->id}}
                             </td>
 
-                            <td class="col-md-1">
+                            <td class="col-xs-1">
                                 <a href="{{ route('claims.show', $claim->id) }}">
                                 {{$claim->author}}
                                 </a>
                             </td>
 
-                            <td class="col-md-1">
+                            <td class="col-xs-1">
                                 {{$claim->place}}
                             </td>
 
-                            <td class="col-md-1">
+                            <td class="col-xs-1">
                                 {{$claim->status}}
                             </td>
 
                             @if(Auth::user()->permission()->value('name') == 'admin')
-                            <td class="col-md-2">
+                            <td class="col-xs-2">
                                 <a href="{{ route('claims.show', $claim->id) }}">
                                 <button class="btn btn-success">Просмотр</button>
                                 </a>
@@ -72,7 +72,7 @@
                                 
                             </td>
                             @elseif(Auth::user()->permission()->value('name') == 'sotr')
-                                <td class="col-md-2">
+                                <td class="col-xs-2">
                                     <a href="{{ route('claims.show', $claim->id) }}">
                                         <button class="btn btn-success">Просмотр</button>
                                     </a>
