@@ -122,7 +122,7 @@ form{
 
 </style>
 </head>
-<body style="background-color: #ecf0f1;">
+<body style="background-color: #EEEEEE;">
     <div id="app">
         <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #3498db;">
             <div class="container">
