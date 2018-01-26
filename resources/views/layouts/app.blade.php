@@ -81,24 +81,26 @@ form{
 
 }
 .schedule-head{
-    background-color: #80d8ff;
+    background-color: #77C6DF;
     border-radius: 5px 5px 0 0;
-    padding: 5px 7px;
+    padding: 2px 7px;
     text-align: center;
 }
 
 /*Style for schedule-today card*/
 
 .schedule-card-today{
-    height: 200px;
-    width: 200px;
+    height: 132px;
+    font-size: 11px;
+    width: 160px;
+
     border-radius: 5px;
-    background-color: #A5D6A7;
+    background-color: #EEEEEE;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     float: left;
-    margin-left: 20px;
-    margin-top: 20px;
+    /*margin-left: 20px;*/
+    margin-top: 7px;
 }
 .schedule-card-today:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -108,14 +110,14 @@ form{
     font-family: 'Roboto', sans-serif;
     vertical-align: middle;
     text-align: center;
-    margin: 13px;
+    margin: 5px;
     height: fit-content;
 
 }
 .schedule-head-today{
     background-color: #4CAF50;
     border-radius: 5px 5px 0 0;
-    padding: 5px 7px;
+    padding: 2px 7px;
     text-align: center;
 }
 
