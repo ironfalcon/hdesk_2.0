@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+include_once('pars/curl.php');
+include_once('pars/simple_html_dom.php');
 class GroupTableSeeder extends Seeder
 {
     /**
@@ -12,14 +13,23 @@ class GroupTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('groups')->insert([
-            'name' => 'б1ИФСТ-41',
-            'url' => 'http://rasp.sstu.ru/group/42',
-        ]);
+        $html = curl_get('http://rasp.sstu.ru');
+        $dom = str_get_html($html);
+        $courses = $dom->find('.col-group');
+        $flag = 0;
+        foreach ($courses as $course) {
+            if ($flag < 71)
+                $flag++;
+            else
+                break;
 
-        DB::table('groups')->insert([
-            'name' => 'б1ИВЧТ-41',
-            'url' => 'http://rasp.sstu.ru/group/22',
-        ]);
+            $name = $course->find('a', 0)->plaintext;
+
+            DB::table('groups')->insert([
+                'name' => $name,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ]);
+        }
     }
 }

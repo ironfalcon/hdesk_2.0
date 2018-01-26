@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'user',
-            'group_id' => Group::where('name', 'б1ИФСТ-41')->value('id'),
+            'group_id' => Group::where('name', 'б1-ИФСТ41')->value('id'),
             'permission_id' => 1, 
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'user1',
-            'group_id' => Group::where('name', 'б1ИФСТ-41')->value('id'),
+            'group_id' => Group::where('name', 'б1-ИФСТ41')->value('id'),
             'permission_id' => 1,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
@@ -43,7 +43,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'user2',
-            'group_id' => Group::where('name', 'б1ИФСТ-41')->value('id'),
+            'group_id' => Group::where('name', 'б1-РКЛМипу41')->value('id'),
             'permission_id' => 1,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
@@ -55,7 +55,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'user3',
-            'group_id' => Group::where('name', 'б1ИВЧТ-41')->value('id'),
+            'group_id' => Group::where('name', 'б1-ИВЧТ41')->value('id'),
             'permission_id' => 1,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
@@ -67,7 +67,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'user4',
-            'group_id' => Group::where('name', 'б1ИВЧТ-41')->value('id'),
+            'group_id' => Group::where('name', 'б1-ИВЧТ41')->value('id'),
             'permission_id' => 1,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),

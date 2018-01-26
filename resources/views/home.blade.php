@@ -22,6 +22,9 @@
                         <a href="{{ route('news.index') }}">
                             <div class="btn btn-success">Новости</div>
                         </a>
+                        <a href="{{ route('schedules.index') }}">
+                            <div class="btn btn-success">Расписание</div>
+                        </a>
                     @elseif(Auth::user()->permission()->value('name') == 'sotr')
                         <a href="{{ route('news.index') }}">
                             <div class="btn btn-success">Новости</div>
