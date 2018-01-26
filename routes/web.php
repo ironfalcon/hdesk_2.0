@@ -26,5 +26,6 @@ Route::post('profile', 'UserController@update_avatar');
 Route::get('messages/create', 'MessageController@create')->name('messages.create');
 Route::post('messages', 'MessageController@store')->name('messages.store');
 Route::get('messages', 'MessageController@index')->name('messages.index');
+Route::get('schedules', 'ScheduleController@index')->name('schedules.index');
 
 Route::get('/home', 'HomeController@index')->name('home');
