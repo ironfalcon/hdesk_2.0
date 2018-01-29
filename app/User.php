@@ -51,8 +51,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Claim');
     }
 
-    public function messages()
+    public function message_from()
     {
         return $this->hasMany('App\Message','from_user_id');
+    }
+
+    public function message_to()
+    {
+        return $this->hasMany('App\Message','to_user_id');
     }
 }
