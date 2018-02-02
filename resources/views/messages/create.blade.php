@@ -9,7 +9,7 @@
                
                {!! Form::open(['route' => ['messages.store']]) !!}
                <div class="form-group">
-                   <label for="body">Текст оповещения:</label>
+                   <label for="body">Новое сообщение:</label>
                    <textarea class="form-control" rows="5" name="body" id="body">{{ old('body')}}</textarea>
                <br>
                    <label for="group">Получатель:</label>

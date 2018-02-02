@@ -8,7 +8,10 @@
 }
 </style>
     <div class="container">
-        <h3>Ваши оповещения:</h3>
+    @if(Auth::user()->permission()->value('name') == 'admin' || Auth::user()->permission()->value('name') == 'sotr')
+    <a href="{{ route('messages.create') }}" class="btn btn-success" style="float:right;">Создать</a>
+    @endif
+        <h3>Мои сообщения:</h3>
         <div class="row">  
             <div class="col-xs-10 col-xs-offset-1">
                 <table class="table">
