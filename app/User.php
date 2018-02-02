@@ -60,4 +60,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Message','to_user_id');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f89164c812a335c9d3707bcc554fc454d43a00b0
 }

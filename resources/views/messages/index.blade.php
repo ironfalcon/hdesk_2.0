@@ -15,7 +15,7 @@
                     <thead>
                         <tr>
                             <td>От кого</td>
-                            <td>Кому</td>
+                            <td>текст</td>
                             <td>Дата</td>
                         </tr>
                     </thead>
@@ -29,8 +29,19 @@
 
 
                             <td class="col-xs-1">
+                                 {{ $users->find($message->from_user_id)->name }}
+                               <!-- {{ $id = $message->from_user_id }}-->
+                               <!-- {{ $message->user()->where('id', $id)->value('id') }}-->
+                            </td>
+                            <td class="col-xs-1">
                                 <!-- $user->find($message->from_user_id)->name-->
-                                {{ $message->user()->value('name') }}
+                                <a href="{{ route('messages.show', $message->id) }}">
+                                {{ $message->body }}
+                                </a>
+                            </td>
+                            <td class="col-xs-1">
+                                <!-- $user->find($message->from_user_id)->name-->
+                                {{ $message->date_send }}
                             </td>
 
 

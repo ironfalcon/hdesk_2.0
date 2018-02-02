@@ -13,4 +13,11 @@ class Message extends Model
     {
         return $this->belongsTo('App\User', 'id');
     }
+
+    public function fromUser()
+    {
+        $from = $this->value('from_user_id');
+        $user = User::where('id', $from)->value('name');
+        return $user;
+    }
 }
