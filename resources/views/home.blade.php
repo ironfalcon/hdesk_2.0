@@ -43,6 +43,9 @@
                             <div class="btn btn-success">Просмотр заявок</div>
                         </a>
                     @endif
+                        <a href="{{ route('messages.index') }}">
+                            <div class="btn btn-success">Сообщения</div>
+                        </a>
 
                 </div>
             </div>

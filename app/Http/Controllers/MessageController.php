@@ -11,8 +11,11 @@ class MessageController extends Controller
 {
     public function index()
     {
-        $gp_id = Auth::user()->group()->value('id');
-        $messages = Message::where('to_user_id', $gp_id)->get();
+        // $gp_id = Auth::user()->group()->value('id');
+        // $messages = Message::where('to_user_id', $gp_id)->get();
+        // $users = User::all();
+        // return view('messages.index', ['messages' => $messages, 'users' => $users]);
+        $messages = Message::where('to_user_id', Auth::user()->id)->get();
         $users = User::all();
         return view('messages.index', ['messages' => $messages, 'users' => $users]);
     }
@@ -37,6 +40,15 @@ class MessageController extends Controller
 //        $message->to_user_id = $request->to_user_id;
 //        $message->save();
         return redirect()->route('messages.index');
+    }
+
+    public function show($id)
+    {
+        $myMessage = Message::find($id);
+        $myMessage->unread = 0;
+        $myMessage->save();
+        $users = User::all();
+        return view('messages.show', ['message' => $myMessage, 'users' => $users]);
     }
 
 

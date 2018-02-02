@@ -59,7 +59,7 @@ form{
 
 .schedule-card{
     height: 200px;
-    width: 200px;
+    width: 205px;
     border-radius: 5px;
     background-color: #E1F5FE;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -92,7 +92,7 @@ form{
 .schedule-card-today{
     height: 132px;
     font-size: 11px;
-    width: 160px;
+    width: 165px;
 
     border-radius: 5px;
     background-color: #EEEEEE;
