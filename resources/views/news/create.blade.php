@@ -6,7 +6,7 @@
     <div class="container">
 
         <h3>Создание новости</h3>
-            <div class="row col-xs-10 col-xs-offset-1">
+            <div class="row col-xs-10 col-xs-offset-1" style="background-color: #ecf0f1; padding: 30px 30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
             
                
                 <form enctype="multipart/form-data" action="{{ route('news.store') }}" method="POST">
