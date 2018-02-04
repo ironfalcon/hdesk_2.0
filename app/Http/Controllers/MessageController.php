@@ -16,8 +16,9 @@ class MessageController extends Controller
         // $users = User::all();
         // return view('messages.index', ['messages' => $messages, 'users' => $users]);
         $messages = Message::where('to_user_id', Auth::user()->id)->get();
+        $messagesFrom = Message::where('from_user_id', Auth::user()->id)->get();
         $users = User::all();
-        return view('messages.index', ['messages' => $messages, 'users' => $users]);
+        return view('messages.index', ['messages' => $messages, 'users' => $users, 'messagesFrom' => $messagesFrom]);
     }
 
     public function create()
