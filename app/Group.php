@@ -13,4 +13,8 @@ class group extends Model
     {
         return $this->hasMany('App\User');
     }
+    public function message_group()
+    {
+        return $this->hasMany('App\Message','to_group_id');
+    }
 }

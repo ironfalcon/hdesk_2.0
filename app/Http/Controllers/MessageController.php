@@ -30,10 +30,21 @@ class MessageController extends Controller
     {
         $this->validate($request, [
             'body' => 'required',
-            'to_user_id' => 'required'
             ]);
 
-        Message::create($request->all());
+        $gp_id = $request->to_group_id;
+        $gp = Group::find($gp_id);
+        $gp = $gp->users()->get();
+        foreach ($gp as $gp_user){
+
+            $message = new Message;
+            $message->from_user_id = $request->from_user_id;
+            $message->body = $request->body;
+            $message->to_user_id = $gp_user->id;
+            $message->save();
+        }
+
+        //Message::create($request->all());
 //        $message = new Message;
 //        $message->from_user_id = $request->from_user_id;
 //        $message->body = $request->body;
