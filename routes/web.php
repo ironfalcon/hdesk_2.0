@@ -30,3 +30,4 @@ Route::get('messages/{message}', 'MessageController@show')->name('messages.show'
 Route::get('schedules', 'ScheduleController@index')->name('schedules.index');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'SearchController@ajaxData'));

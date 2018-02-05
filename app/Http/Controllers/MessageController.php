@@ -33,25 +33,36 @@ class MessageController extends Controller
             'body' => 'required',
             ]);
 
-        $gp_id = $request->to_group_id;
-        $gp = Group::find($gp_id);
-        $gp = $gp->users()->get();
-        foreach ($gp as $gp_user){
-
+        if(!empty($request->name))
+        {
+            $user = User::where('name', $request->name)->value('id');
+            //Message::create($request->all());
             $message = new Message;
             $message->from_user_id = $request->from_user_id;
             $message->body = $request->body;
-            $message->to_user_id = $gp_user->id;
+            $message->to_user_id = $user;
             $message->save();
+            return redirect()->route('messages.index');
+        }
+        
+        if(!empty($request->to_group_id))
+        {
+
+            $gp_id = $request->to_group_id;
+            $gp = Group::find($gp_id);
+            $gp = $gp->users()->get();
+            foreach ($gp as $gp_user){
+
+                $message = new Message;
+                $message->from_user_id = $request->from_user_id;
+                $message->body = $request->body;
+                $message->to_user_id = $gp_user->id;
+                $message->save();
+            }
+            return redirect()->route('messages.index');
         }
 
-        //Message::create($request->all());
-//        $message = new Message;
-//        $message->from_user_id = $request->from_user_id;
-//        $message->body = $request->body;
-//        $message->to_user_id = $request->to_user_id;
-//        $message->save();
-        return redirect()->route('messages.index');
+        
     }
 
     public function show($id)

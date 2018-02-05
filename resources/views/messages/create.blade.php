@@ -49,7 +49,13 @@
                            </h4>
                        </div>
                        <div id="collapse2" class="panel-collapse collapse">
-                           <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                           <div class="panel-body">
+                           
+                           <input id="search_text" type="search" class="form-control" name="name">
+                           <br>
+                           <br>
+                           <button class="btn btn-success">Отправить</button>
+                           
                            </div>
                        </div>
                    </div>
@@ -57,10 +63,35 @@
 
 
 
-                </form>
                {!! Form::close() !!}
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        var url = "{{ route('autocomplete.ajax') }}";
+
+        $('#search_text').typeahead({
+
+            source:  function (query, process) {
+
+            return $.get(url, { query: query }, function (data) {
+
+                    return process(data);
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
 
 @endsection('content')
