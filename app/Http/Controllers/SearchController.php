@@ -7,13 +7,6 @@ use App\User;
 
 class SearchController extends Controller
 {
-    public function index()
-
-    {
-
-    	return view('messages/test');
-
-    }
     
     public function ajaxData(Request $request){
 
