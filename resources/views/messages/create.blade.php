@@ -2,7 +2,10 @@
 
 @section('content')
 @include('errors')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <div class="container">
 
         <h3>Новое сообщение</h3>
@@ -50,7 +53,7 @@
                        </div>
                        <div id="collapse2" class="panel-collapse collapse">
                            <div class="panel-body">
-                           <input placeholder="Search Text" class="form-control" id="search_text" name="search_text" type="text">
+                           <input placeholder="Search Text" class="form-control" id="search_text" name="search_text" type="text" autocomplete="off">
                            
                            <br>
                            <br>
@@ -67,11 +70,6 @@
         </div>
     </div>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
 <script type="text/javascript">
 
