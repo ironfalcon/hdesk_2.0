@@ -8,10 +8,12 @@
 }
 </style>
     <div class="container">
+        <div class="row col-xs-12">
         <h3>Список выданного оборудования</h3>
         <a href="{{ route('tasks.create') }}" class="btn btn-success" style="float:right;">Создать</a>
-        <div class="row">  
-            <div class="col-md-8 col-md-offset-2">
+    </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
                 <table class="table">
                     <thead>
                         <tr>
