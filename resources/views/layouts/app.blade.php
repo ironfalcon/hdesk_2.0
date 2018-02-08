@@ -195,7 +195,7 @@ form{
                 </div>
             </div>
         </nav>
-        </div>
+
 
         @yield('content')
     </div>

@@ -16,7 +16,14 @@
                    <label for="body">Текст сообщения:</label>
                    <textarea class="form-control" rows="5" name="body" id="body">{{ old('body')}}</textarea>
                <br>
+                @if(Auth::user()->permission()->value('name') == 'stud')
+                       <label for="search_text">Получатель:</label>
+                       <input placeholder="Search Text" class="form-control" id="search_text" name="name" type="text" autocomplete="off">
 
+                       <br>
+                       <br>
+                       <button class="btn btn-success">Отправить</button>
+                @else
                    <div class="panel-group" id="accordion">
                        <div class="panel panel-default">
                            <div class="panel-heading">
@@ -53,7 +60,7 @@
                        </div>
                        <div id="collapse2" class="panel-collapse collapse">
                            <div class="panel-body">
-                           <input placeholder="Search Text" class="form-control" id="search_text" name="search_text" type="text" autocomplete="off">
+                           <input placeholder="Search Text" class="form-control" id="search_text" name="name" type="text" autocomplete="off">
                            
                            <br>
                            <br>
@@ -63,11 +70,13 @@
                        </div>
                    </div>
                </div>
+                @endif
 
 
 
                {!! Form::close() !!}
         </div>
+    </div>
     </div>
 
 
