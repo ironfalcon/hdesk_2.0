@@ -26,6 +26,8 @@
 body{
     padding-top: 70px;
     padding-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('backgrounds/2.jpg');
 }
 form{
     display:inline;
@@ -125,6 +127,9 @@ form{
     border-radius: 5px 5px 0 0;
     padding: 2px 7px;
     text-align: center;
+}
+.modal-body img{
+    margin-bottom:4px;
 }
 
 
