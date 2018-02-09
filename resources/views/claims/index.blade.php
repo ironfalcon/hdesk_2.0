@@ -9,15 +9,16 @@
 </style>
     <div class="container">
         @if(Auth::user()->permission()->value('name') == 'sotr')
-            <h3>Ваши отправленные заявки</h3>
+            <h3 style="display: inline;">Ваши отправленные заявки</h3>
             <a href="{{ route('claims.create') }}" class="btn btn-success" style="float:right;">Создать</a>
         @else
-            <h3>Заявки пользователей</h3>
+            <h3 style="display: inline;">Заявки пользователей</h3>
             <a href="{{ route('claims.create') }}" class="btn btn-success" style="float:right;">Создать</a>
         @endif
 
         <div class="row">  
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-10 col-xs-offset-1" style="background-color:#ecf0f1;padding: 30px 30px;
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
                 <table class="table">
                     <thead>
                         <tr>
@@ -87,6 +88,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $claims->links() }}
             </div>
         </div>
     </div>

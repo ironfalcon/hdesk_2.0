@@ -15,11 +15,11 @@ class ClaimController extends Controller
         // смотреть данный раздел
 
         if(Gate::allows('isAdmin')){
-            $claims = Claim::all();
+            $claims = Claim::paginate(15);
             return view('claims.index', ['claims' => $claims]);
         }
         if(Gate::allows('isSotr')){
-            $claims = Claim::where('author', Auth::user()->name)->get();
+            $claims = Claim::where('author', Auth::user()->name)->paginate(15);
             return view('claims.index', ['claims' => $claims]);
         }
         if(Gate::allows('isStud')){

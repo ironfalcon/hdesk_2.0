@@ -108,6 +108,7 @@
                                     @endforeach
                             </tbody>
                         </table>
+                        {{ $messagesFrom->links() }}
                     </div>
                 </div>
 
