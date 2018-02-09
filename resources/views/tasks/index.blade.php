@@ -11,15 +11,9 @@
         <div class="row col-xs-12">
         <h3>Список выданного оборудования</h3>
         <a href="{{ route('tasks.create') }}" class="btn btn-success" style="float:right;">Создать</a>
-<<<<<<< HEAD
         <div class="row">  
             <div class="col-md-8 col-md-offset-2" style="background-color:#ecf0f1;padding: 30px 30px;
                     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
-=======
-    </div>
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
->>>>>>> fe533907decff16868b2e1298f3a834839990dbc
                 <table class="table">
                     <thead>
                         <tr>
