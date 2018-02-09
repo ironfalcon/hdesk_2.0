@@ -14,9 +14,8 @@
                 {{ csrf_field() }}
                 <lable>Обновить фото профиля</lable>
                 <br>
-                <button type="submit" class="pull-right btn btn-sm btn-primary">Загрузить</button>
                 <input type="file" name="avatar" style="display:inline;">
-                
+                <button type="submit" class="pull-right btn btn-sm btn-primary">Загрузить</button>
             </form>
             </div>
 
@@ -51,7 +50,7 @@
   </div>
 <script>
 function qwe(a) {
-a = a.slice(14,);
+a = a.slice(-17,);
 document.getElementById('bg').value = a;
 
 

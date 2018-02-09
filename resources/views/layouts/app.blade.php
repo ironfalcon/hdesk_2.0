@@ -28,6 +28,8 @@ body{
     padding-bottom: 30px;
     font-family: 'Roboto', sans-serif;
     background-image: url('backgrounds/2.jpg');
+    background-repeat: no-repeat 100% 100%;
+    background-attachment: fixed;
 }
 form{
     display:inline;
