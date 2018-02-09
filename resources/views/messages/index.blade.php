@@ -40,7 +40,7 @@
                                     <tr class="bg-danger">
                                 @else
                                     <tr class="bg-success">
-                                        @endif
+                                @endif
                                         <td class="col-xs-1">
                                         {{ $users->find($message->from_user_id)->name }}
                                         <!-- {{ $id = $message->from_user_id }}-->
@@ -117,7 +117,6 @@
 
 
 
-
-    </div>
+</div>
 
 @endsection('content')

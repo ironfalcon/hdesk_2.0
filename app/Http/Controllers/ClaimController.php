@@ -75,7 +75,7 @@ class ClaimController extends Controller
         $this->validate($request, [
             'body' => 'required',
             'author' => 'required',
-            'desired_date' => 'required',
+            //'desired_date' => 'required',
             'place' => 'required']);
 
         $myClaim = Claim::find($id);
