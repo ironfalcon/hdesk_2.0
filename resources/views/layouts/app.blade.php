@@ -27,9 +27,16 @@ body{
     padding-top: 70px;
     padding-bottom: 30px;
     font-family: 'Roboto', sans-serif;
-    background-image: url('backgrounds/2.jpg');
+    
+    @guest
+    background-image: url('backgrounds/06.jpg');
     background-repeat: no-repeat 100% 100%;
     background-attachment: fixed;
+    @else
+    background-image: url('backgrounds/{{Auth::user()->bg_image}}');
+    background-repeat: no-repeat 100% 100%;
+    background-attachment: fixed;
+    @endguest
 }
 form{
     display:inline;

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('default.jpg');
             $table->decimal('phone', 12, 0)->unique();
             $table->string('password');
+            $table->string('bg_image')->default('01.png');
             $table->rememberToken();
             $table->timestamps();
         });

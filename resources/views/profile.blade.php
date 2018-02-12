@@ -18,8 +18,8 @@
                 <button type="submit" class="pull-right btn btn-sm btn-primary">Загрузить</button>
             </form>
             </div>
-
-            
+       
+  
   <div class="col-xs-9" style="float:right;background-color:#ecf0f1;padding: 30px 30px;
                     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
     <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#myModal">Выбрать фон</button>
@@ -35,12 +35,12 @@
           <h4 class="modal-title">Modal Header</h4>
         </div>
         <div class="modal-body">
-         <img src="backgrounds/1.png" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
-         <img src="backgrounds/2.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
-         <img src="backgrounds/3.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
-         <img src="backgrounds/4.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
-         <img src="backgrounds/5.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
-         <img src="backgrounds/6.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>         
+         <img src="backgrounds/01.png" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
+         <img src="backgrounds/02.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
+         <img src="backgrounds/03.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
+         <img src="backgrounds/04.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
+         <img src="backgrounds/05.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>
+         <img src="backgrounds/06.jpg" style="height:150px; width:200px;" onclick="qwe(src)" class="photo"/>         
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -50,11 +50,20 @@
   </div>
 <script>
 function qwe(a) {
-a = a.slice(-17,);
+a = a.slice(-6,);
 document.getElementById('bg').value = a;
+ 
+$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        	    
+        $.ajax({
 
+            type: 'get',
+            url: '/profilebg',
+            data: {a1:a, id: {{Auth::user()->id}} },
+            
+        });
 
-document.body.style.backgroundImage = "url(" + a + ")";
+document.body.style.backgroundImage = "url(" + "backgrounds/" + a + ")";
 }
 </script>
 

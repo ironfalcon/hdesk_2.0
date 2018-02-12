@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Image;
+use App\User;
 
 class UserController extends Controller
 {
@@ -27,6 +28,13 @@ class UserController extends Controller
         $user->save();
 
         return view('profile', array('user' => Auth::user()));
+    }
+
+    public function profilebg(Request $request)
+    {
+        $user_bg = User::find($request->id);
+        $user_bg->bg_image = $request->a1;
+        $user_bg->save();
     }
 
 }
