@@ -3,10 +3,13 @@
 @section('content')
 @include('errors')
 
-    <div class="container">
-        <h3>Выдаваемое оборудование</h3>
-
-        <div class="row col-xs-10 col-xs-offset-1" style="background-color: #ecf0f1; padding: 30px 30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h3>Выдаваемое оборудование</h3>
+            </div>
+        </div>
+        <div class="row col-xs-10 col-xs-offset-1">
 
                
                {!! Form::open(['route' => ['tasks.store']]) !!}

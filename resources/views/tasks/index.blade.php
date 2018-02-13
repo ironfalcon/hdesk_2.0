@@ -7,13 +7,13 @@
     display:inline;
 }
 </style>
-    <div class="container">
-        <div class="row col-xs-12">
+    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px">
+        <div class="row col-md-8 col-md-offset-2 col-xs-12" >
         <h3 style="display: inline;">Список выданного оборудования</h3>
         <a href="{{ route('tasks.create') }}" class="btn btn-success" style="float:right;">Создать</a>
+        </div>
         <div class="row">  
-            <div class="col-md-8 col-md-offset-2" style="background-color:#ecf0f1;padding: 30px 30px;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
+            <div class="col-md-8 col-md-offset-2 col-xs-12" style="">
                 <table class="table">
                     <thead>
                         <tr>
@@ -23,7 +23,7 @@
                             <td>Статус</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)">
                     @foreach($tasks as $task)
                     @if($task->status == 'Выдано')
                         <tr class="bg-danger">

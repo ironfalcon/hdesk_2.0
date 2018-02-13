@@ -3,11 +3,11 @@
 @section('content')
 @include('errors')
 
-    <div class="container">
+    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px" >
             <div class="row">
-                <div class="col-xs-8 col-xs-offset-2" style="background-color: #ecf0f1; padding: 30px 30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+                <div class="col-xs-12" >
                 <h3>Информация о выдаче.</h3>
-                    <table class="table">
+                    <table class="table" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                         <tr>
                             <td class="col-xs-4">ID</td>
                             <td class="col-xs-4">{{$task->id}}</td>

@@ -3,9 +3,12 @@
 @section('content')
 @include('errors')
 
-    <div class="container">
+    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px">
+        <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
         <h3>Изменеие записи # {{$task->id}}</h3>
-
+        </div>
+        </div>
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                
@@ -13,7 +16,7 @@
                 
                 <div class="form-group">
                     <label for="elements">Оборудование:</label>
-                    <input type="text" class="form-control" id="elements" name="elements" value="{{ $task->elements}}">
+                    <input type="text" class="form-control" id="elements" name="elements" value="{{ $task->elements}}" >
                 <br>
                     <label for="aud">Аудитория:</label>
                     <input type="text" class="form-control" id="aud" name="aud" value="{{ $task->aud}}">

@@ -2,14 +2,12 @@
 
 @section('content')
 <div id="back">
-<div class="container">
+<div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px;">
     <div class="row">
-        <div class="col-xs-12" style="background-color:#ecf0f1;padding: 30px 30px;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
+        <div class="col-xs-12" >
         <img src="/uploads/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius: 50%; margin-right: 25px;">
             <h2>Профиль пользователя: {{ $user->name }}</h2>
-            <div style="background-color:#ecf0f1;padding: 30px 30px;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px; float:right;" class="col-xs-9">
+            <div  style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px; float:right; padding:30px 30px;" class="col-xs-9">
             <form enctype="multipart/form-data" action="profile" method="POST">
                 {{ csrf_field() }}
                 <lable>Обновить фото профиля</lable>
@@ -20,10 +18,9 @@
             </div>
        
   
-  <div class="col-xs-9" style="float:right;background-color:#ecf0f1;padding: 30px 30px;
+  <div class="col-xs-9" style="float:right;padding: 30px 30px;
                     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
     <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#myModal">Выбрать фон</button>
-<input id="bg">
 </div>
 
   <!-- Modal -->
@@ -51,8 +48,6 @@
 <script>
 function qwe(a) {
 a = a.slice(-6,);
-document.getElementById('bg').value = a;
- 
 $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         	    
         $.ajax({

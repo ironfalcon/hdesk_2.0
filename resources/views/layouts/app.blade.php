@@ -33,7 +33,7 @@ body{
     background-repeat: no-repeat 100% 100%;
     background-attachment: fixed;
     @else
-    background-image: url('backgrounds/{{Auth::user()->bg_image}}');
+    background-image: url('http://h-desk/backgrounds/{{Auth::user()->bg_image}}');
     background-repeat: no-repeat 100% 100%;
     background-attachment: fixed;
     @endguest
@@ -141,10 +141,15 @@ form{
     margin-bottom:4px;
 }
 
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 0px;
+}
+
 
 </style>
 </head>
-<body style="background-color: #EEEEEE;">
+<body >
     <div id="app">
         <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #3498db;">
             <div class="container">
