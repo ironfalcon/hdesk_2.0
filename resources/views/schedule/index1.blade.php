@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px">
         <h3>Расписание группы {{ $group }}</h3><br>
         <div class="row col-sm-12">
                 <div style="float: left; width: 175px" class="wrap">
