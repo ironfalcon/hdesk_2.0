@@ -7,7 +7,8 @@
     display:inline;
 }
 </style>
-    <div class="container">
+    <div class="container mid-ground">
+    <div class="row col-xs-10 col-xs-offset-1">
         @if(Auth::user()->permission()->value('name') == 'sotr')
             <h3 style="display: inline;">Ваши отправленные заявки</h3>
             <a href="{{ route('claims.create') }}" class="btn btn-success" style="float:right;">Создать</a>
@@ -15,10 +16,9 @@
             <h3 style="display: inline;">Заявки пользователей</h3>
             <a href="{{ route('claims.create') }}" class="btn btn-success" style="float:right;">Создать</a>
         @endif
-
+    </div>
         <div class="row">  
-            <div class="col-xs-10 col-xs-offset-1" style="background-color:#ecf0f1;padding: 30px 30px;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
+            <div class="col-xs-10 col-xs-offset-1" >
                 <table class="table">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                             <td>Статус</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
                     @foreach($claims as $claim)
                     @if($claim->status == 'Не просмотрен')
                         <tr class="bg-danger">
