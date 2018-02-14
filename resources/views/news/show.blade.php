@@ -5,7 +5,7 @@
 
     <div class="container">
             <div class="row">
-                <div class="col-xs-10 col-xs-offset-1" style="background-color: #ecf0f1; padding: 30px 30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+                <div class="col-xs-10 col-xs-offset-1 mid-ground" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                     <h3>{{$news->title}}</h3>
                 <br>
                 <div class="col-xs-6">

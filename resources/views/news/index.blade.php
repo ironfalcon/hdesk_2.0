@@ -3,12 +3,12 @@
 @section('content')
 
 
-    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px">
+    <div class="container mid-ground">
         <div class="row" >
         <div class="col-xs-10 col-xs-offset-1">
         <h3 style="display: inline;">Новости факультета</h3>
         @if(Auth::user()->permission()->value('name') == 'admin')
-        <a href="{{ route('news.create') }}" class="btn btn-success" style="float:right;">Создать</a>
+        <a href="{{ route('news.create') }}" class="btn btn-primary" style="float:right;">Создать</a>
         @endif
         <br>
         </div>

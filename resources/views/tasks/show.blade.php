@@ -3,7 +3,7 @@
 @section('content')
 @include('errors')
 
-    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px" >
+    <div class="container mid-ground">
             <div class="row">
                 <div class="col-xs-12" >
                 <h3>Информация о выдаче.</h3>

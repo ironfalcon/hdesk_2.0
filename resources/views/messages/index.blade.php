@@ -7,7 +7,7 @@
     display:inline;
 }
 </style>
-    <div class="container">
+    <div class="container mid-ground">
         <h3 style="float:left;display: inline;margin-left: 81px;">Мои сообщения:</h3>
     {{--@if(Auth::user()->permission()->value('name') == 'admin' || Auth::user()->permission()->value('name') == 'sotr')--}}
     <a href="{{ route('messages.create') }}" class="btn btn-success" style="float:right;margin-top: 15px;margin-right: 84px;">Создать</a>
@@ -24,8 +24,7 @@
             <div id="incoming" class="tab-pane fade in active">
 
                 <div class="row">
-                    <div class="col-xs-10 col-xs-offset-1" style="background-color:#ecf0f1;padding: 30px 30px;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
+                    <div class="col-xs-10 col-xs-offset-1" >
                         <table class="table">
                             <thead>
                             <tr>
@@ -34,7 +33,7 @@
                                 <td>Дата</td>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
                             @foreach($messages as $message)
                                 @if($message->unread == '1')
                                     <tr class="bg-danger">
@@ -68,8 +67,7 @@
             <div id="outgoing" class="tab-pane fade">
 
                 <div class="row">
-                    <div class="col-xs-10 col-xs-offset-1" style="background-color:#ecf0f1;padding: 30px 30px;
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
+                    <div class="col-xs-10 col-xs-offset-1">
                         <table class="table">
                             <thead>
                             <tr>
@@ -78,7 +76,7 @@
                                 <td>Дата</td>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin-top: 10px;">
                             @foreach($messagesFrom as $message)
                                 @if($message->unread == '1')
                                     <tr class="bg-danger">

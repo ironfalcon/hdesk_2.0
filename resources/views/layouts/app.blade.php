@@ -145,6 +145,10 @@ form{
     top: 0;
     border-width: 0 0 0px;
 }
+.mid-ground{
+    background-image:url('http://h-desk/middleground/11.png');
+    padding: 30px 30px;
+}
 
 
 </style>

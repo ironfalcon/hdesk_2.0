@@ -6,10 +6,11 @@
 
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
     {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
-    <div class="container">
-
+    <div class="container mid-ground">
+        <div class="row col-xs-10 col-xs-offset-1">
         <h3>Новое сообщение</h3>
-        <div class="row col-xs-10 col-xs-offset-1" style="background-color: #ecf0f1; padding: 30px 30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+        </div>
+        <div class="row col-xs-10 col-xs-offset-1" >
                
                {!! Form::open(['route' => ['messages.store']]) !!}
                <div class="form-group">
@@ -51,7 +52,7 @@
                        </div>
 
 
-                       <div class="panel panel-default">
+                       <div class="panel panel-default" >
                        <div class="panel-heading">
                            <h4 class="panel-title">
                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">

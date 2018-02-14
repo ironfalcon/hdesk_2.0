@@ -7,7 +7,7 @@
     display:inline;
 }
 </style>
-    <div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px">
+    <div class="container mid-ground">
         <div class="row col-md-8 col-md-offset-2 col-xs-12" >
         <h3 style="display: inline;">Список выданного оборудования</h3>
         <a href="{{ route('tasks.create') }}" class="btn btn-success" style="float:right;">Создать</a>
