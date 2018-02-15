@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class NewsTableSeeder extends Seeder
 {
@@ -36,8 +37,8 @@ class NewsTableSeeder extends Seeder
                 Maecenas scelerisque lorem nec orci elementum pharetra. Ut viverra venenatis libero vel tincidunt.',
             'photo' => 'default.jpg',
             'description' => 'Краткое описание первой статьи текст текст',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -66,8 +67,8 @@ class NewsTableSeeder extends Seeder
                 Maecenas scelerisque lorem nec orci elementum pharetra. Ut viverra venenatis libero vel tincidunt.',
             'photo' => 'default.jpg',
             'description' => 'Краткое описание второй статьи текст текст',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-10 14:30:13')->toDateTimeString(),
+            'updated_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-10 14:30:13')->toDateTimeString(),
 
         ]);
 
@@ -96,8 +97,8 @@ class NewsTableSeeder extends Seeder
                 Maecenas scelerisque lorem nec orci elementum pharetra. Ut viverra venenatis libero vel tincidunt.',
             'photo' => 'default.jpg',
             'description' => 'Краткое описание третьей статьи текст текст',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-9 13:30:13')->toDateTimeString(),
+            'updated_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-10 14:30:13')->toDateTimeString(),
 
         ]);
         DB::table('informations')->insert([
@@ -125,8 +126,8 @@ class NewsTableSeeder extends Seeder
                 Maecenas scelerisque lorem nec orci elementum pharetra. Ut viverra venenatis libero vel tincidunt.',
             'photo' => 'default.jpg',
             'description' => 'Краткое описание четвертой статьи текст текст',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-5 14:40:09')->toDateTimeString(),
+            'updated_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-5 14:40:09')->toDateTimeString(),
 
         ]);
 
@@ -155,8 +156,8 @@ class NewsTableSeeder extends Seeder
                 Maecenas scelerisque lorem nec orci elementum pharetra. Ut viverra venenatis libero vel tincidunt.',
             'photo' => 'default.jpg',
             'description' => 'Краткое описание пятой статьи текст текст',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-01 12:10:33')->toDateTimeString(),
+            'updated_at' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-01 12:10:33')->toDateTimeString(),
 
         ]);
 

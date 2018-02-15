@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class ClaimTableSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class ClaimTableSeeder extends Seeder
         DB::table('claims')->insert([
             'Body' => str_random(60),
             'author' => User::where('id', 2)->value('name'),
-            'desired_date' => date("Y-m-d H:i:s"),
+            'desired_date' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-10 14:30:13')->toDateTimeString(),
             'place' => str_random(3),
             'status' => 'Не просмотрен',
 
@@ -24,7 +25,7 @@ class ClaimTableSeeder extends Seeder
         DB::table('claims')->insert([
             'Body' => str_random(60),
             'author' => User::where('id', 3)->value('name'),
-            'desired_date' => date("Y-m-d H:i:s"),
+            'desired_date' => Carbon::createFromFormat('Y-m-d H:i:s', '2018-02-10 14:30:13')->toDateTimeString(),
             'place' => str_random(3),
             'status' => 'Не просмотрен',
 

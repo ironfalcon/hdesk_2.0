@@ -7,6 +7,7 @@ use App\Information;
 use Auth;
 use Image;
 use Gate;
+use Carbon\Carbon;
 
 class InformationController extends Controller
 {
@@ -17,7 +18,7 @@ class InformationController extends Controller
 
     public function index()
     {   
-        $news = Information::all();
+        $news = Information::orderBy('created_at','asc')->get();
         return view('news.index', ['news' => $news]);
     }
     
@@ -50,6 +51,7 @@ class InformationController extends Controller
         $news->body = $request->body;
         $news->description = $request->description;
         $news->photo = $photo;
+        $news->created_at = Carbon::now('Europe/Samara');
         $news->save();
         return redirect()->route('news.index');
     }

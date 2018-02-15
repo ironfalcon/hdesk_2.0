@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Carbon\Carbon;
 class TaskTableSeeder extends Seeder
 {
     /**
@@ -18,7 +19,7 @@ class TaskTableSeeder extends Seeder
             'updated_user' => '--',
             'status' => 'Выдано',
             'description' => str_random(5),
-            'created_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -29,7 +30,7 @@ class TaskTableSeeder extends Seeder
             'updated_user' => User::where('id', 8)->value('name'),
             'status' => 'Забрали',
             'description' => str_random(5),
-            'created_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
 
         ]);
     }

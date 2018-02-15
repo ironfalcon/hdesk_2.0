@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+
 include_once('pars/curl.php');
 include_once('pars/simple_html_dom.php');
 class GroupTableSeeder extends Seeder
@@ -27,8 +29,8 @@ class GroupTableSeeder extends Seeder
 
             DB::table('groups')->insert([
                 'name' => $name,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
+                'created_at' => Carbon::now('Europe/Samara'),
+                'updated_at' => Carbon::now('Europe/Samara'),
             ]);
         }
     }

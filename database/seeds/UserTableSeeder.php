@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\Group;
+use Carbon\Carbon;
 
 
 class UserTableSeeder extends Seeder
@@ -24,8 +25,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9873614549,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
             
         ]);
 
@@ -36,8 +37,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9871614549,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -48,8 +49,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9871618549,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -60,8 +61,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9871635549,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -72,8 +73,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9871448549,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -83,8 +84,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9873613448,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
            
         ]);
 
@@ -94,8 +95,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9873613478,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
 
         ]);
 
@@ -105,8 +106,8 @@ class UserTableSeeder extends Seeder
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
             'phone' => 9874513447,
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s"),
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
         ]);
     }
 }
