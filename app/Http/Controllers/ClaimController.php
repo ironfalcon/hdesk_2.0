@@ -15,11 +15,11 @@ class ClaimController extends Controller
         // смотреть данный раздел
 
         if(Gate::allows('isAdmin')){
-            $claims = Claim::paginate(15);
+            $claims = Claim::orderBy('created_at','desc')->paginate(15);;
             return view('claims.index', ['claims' => $claims]);
         }
         if(Gate::allows('isSotr')){
-            $claims = Claim::where('author', Auth::user()->name)->paginate(15);
+            $claims = Claim::where('author', Auth::user()->name)->orderBy('created_at','desc')->paginate(15);;
             return view('claims.index', ['claims' => $claims]);
         }
         if(Gate::allows('isStud')){
@@ -53,8 +53,8 @@ class ClaimController extends Controller
             'desired_date' => 'required',
             'place' => 'required']);
 
-        Claim::create($request->all());
-        return redirect()->route('claims.index');
+         Claim::create($request->all());
+         return redirect()->route('claims.index');
     }
 
     public function edit($id)

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\Group;
+use Carbon\Carbon;
 class MessageController extends Controller
 {
     public function index()
@@ -15,8 +16,8 @@ class MessageController extends Controller
         // $messages = Message::where('to_user_id', $gp_id)->get();
         // $users = User::all();
         // return view('messages.index', ['messages' => $messages, 'users' => $users]);
-        $messages = Message::where('to_user_id', Auth::user()->id)->get();
-        $messagesFrom = Message::where('from_user_id', Auth::user()->id)->paginate(5);
+        $messages = Message::where('to_user_id', Auth::user()->id)->orderBy('created_at','desc')->paginate(15);
+        $messagesFrom = Message::where('from_user_id', Auth::user()->id)->orderBy('created_at','desc')->paginate(15);
         $users = User::all();
         return view('messages.index', ['messages' => $messages, 'users' => $users, 'messagesFrom' => $messagesFrom]);
     }
@@ -29,9 +30,12 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
+        if($request->to_group_id == ""){
         $this->validate($request, [
             'body' => 'required',
+            'name' => 'exists:users,name',
             ]);
+        }
 
         if(!empty($request->name))
         {
@@ -41,6 +45,7 @@ class MessageController extends Controller
             $message->from_user_id = $request->from_user_id;
             $message->body = $request->body;
             $message->to_user_id = $user;
+            $message->date_send = date("Y-m-d H:i:s");
             $message->save();
             return redirect()->route('messages.index');
         }
@@ -57,6 +62,7 @@ class MessageController extends Controller
                 $message->from_user_id = $request->from_user_id;
                 $message->body = $request->body;
                 $message->to_user_id = $gp_user->id;
+                $message->date_send = date("Y-m-d H:i:s");
                 $message->save();
             }
             return redirect()->route('messages.index');

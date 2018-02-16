@@ -39,8 +39,9 @@
 
                                 <label for="group">Получатель:</label>
                                 <select name="to_group_id" id="group">
+                                    <option selected value=""></option>
                                 @foreach($groups as $group)
-                                    <option selected value="{{ $group->id }}">{{ $group->name }}</option>
+                                    <option value="{{ $group->id }}">{{ $group->name }}</option>
                                 @endforeach
                                 </select>
                                 <input type="hidden" name="from_user_id" value="{{ Auth::user()->id }}">

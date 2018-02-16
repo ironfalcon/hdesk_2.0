@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateMessagesTable extends Migration
 {
@@ -20,7 +21,7 @@ class CreateMessagesTable extends Migration
             $table->integer('to_user_id')->nullable();
             $table->integer('to_group_id')->nullable();
             $table->boolean('unread')->default(1);
-            $table->string('date_send')->default(date("Y-m-d H:i:s"));
+            $table->string('date_send')->nullable();
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@
                    <input type="text" class="form-control" name="place" id="place" value="{{ old('place')}}">
                <br>
                    <label for="date">Желаемая дата выполнения:</label><br>
-                   <input id="date" type="date" name="desired_date">
+                   <input id="date" type="datetime-local" name="desired_date">
                    <input type="hidden" name="author" value="{{ Auth::user()->name }}">
                <br>
                <br>
