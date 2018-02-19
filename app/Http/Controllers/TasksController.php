@@ -24,7 +24,7 @@ class TasksController extends Controller
             return redirect()->back()->with(['message'=>'У вас нет прав']);
         }
 
-        $tasks = Task::paginate(15);
+        $tasks = Task::orderBy('created_at','desc')->paginate(15);
         return view('tasks.index', ['tasks' => $tasks]);
     }
     

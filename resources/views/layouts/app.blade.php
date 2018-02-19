@@ -30,11 +30,11 @@ body{
     
     @guest
     background-image: url('backgrounds/06.jpg');
-    background-repeat: no-repeat 100% 100%;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     @else
     background-image: url('http://h-desk/backgrounds/{{Auth::user()->bg_image}}');
-    background-repeat: no-repeat 100% 100%;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     @endguest
 }
@@ -194,6 +194,13 @@ form{
                                 </a>
 
                                 <ul class="dropdown-menu" style="background-color: #3498db;">
+                                    
+                                    <li>
+                                        <a href="{{ route('profile') }}">
+                                            Профиль
+                                        </a>
+                                    </li>
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -206,11 +213,6 @@ form{
                                         </form>
                                     </li>
 
-                                    <li>
-                                        <a href="{{ route('profile') }}">
-                                            Профиль
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
                         @endguest
