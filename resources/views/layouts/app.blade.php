@@ -20,20 +20,20 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
-   <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> --> 
+   <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
 
 <style>
 body{
     padding-top: 70px;
     padding-bottom: 30px;
     font-family: 'Roboto', sans-serif;
-    
+
     @guest
     background-image: url('backgrounds/06.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     @else
-    background-image: url('http://h-desk/backgrounds/{{Auth::user()->bg_image}}');
+    background-image: url('backgrounds/{{Auth::user()->bg_image}}');
     background-repeat: no-repeat;
     background-attachment: fixed;
     @endguest
@@ -146,7 +146,7 @@ form{
     border-width: 0 0 0px;
 }
 .mid-ground{
-    background-image:url('http://h-desk/middleground/11.png');
+    background-image:url('middleground/11.png');
     padding: 30px 30px;
 }
 
@@ -194,7 +194,7 @@ form{
                                 </a>
 
                                 <ul class="dropdown-menu" style="background-color: #3498db;">
-                                    
+
                                     <li>
                                         <a href="{{ route('profile') }}">
                                             Профиль
@@ -229,6 +229,6 @@ form{
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 
-    
+
 </body>
 </html>

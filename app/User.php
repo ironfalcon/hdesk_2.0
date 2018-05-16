@@ -33,31 +33,32 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // Relationships User => Group
+    // связь пользователь группа
     public function group()
     {
         return $this->belongsTo('App\Group');
     }
 
-    // Relationships User => Permission
+    // связь пользователь права
     public function permission()
     {
     return $this->belongsTo('App\Permission');
     }
 
+    //связь пользователь коменты
+    public function comments()
+    {
+      return $this->hasMany('App\Comment', 'comment_to_id');
+    }
+
     //Relationships User =>Claims
-    public function Claim()
-    {
-        return $this->hasMany('App\Claim');
-    }
+    // public function Claim()
+    // {
+    //     return $this->hasMany('App\Claim');
+    // }
 
-    public function message_from()
-    {
-        return $this->hasMany('App\Message','from_user_id');
-    }
-
-    public function message_to()
-    {
-        return $this->hasMany('App\Message','to_user_id');
-    }
+    // public function message_from()
+    // {
+    //     return $this->hasMany('App\Message','from_user_id');
+    // }
 }
