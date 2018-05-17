@@ -8,6 +8,7 @@ use App\Permission;
 use App\Group;
 use App\Claim;
 use App\Message;
+use App\Task;
 
 
 
@@ -51,6 +52,10 @@ class User extends Authenticatable
       return $this->hasMany('App\Comment', 'comment_to_id');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
     //Relationships User =>Claims
     // public function Claim()
     // {

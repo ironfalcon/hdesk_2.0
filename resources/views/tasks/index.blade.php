@@ -7,63 +7,54 @@
     display:inline;
 }
 </style>
-    <div class="container mid-ground">
-        <div class="row col-md-8 col-md-offset-2 col-xs-12" >
-        <h3 style="display: inline;">Список выданного оборудования</h3>
-        <a href="{{ route('tasks.create') }}" class="btn btn-success" style="float:right;">Создать</a>
-        </div>
-        <div class="row">  
-            <div class="col-md-8 col-md-offset-2 col-xs-12" style="">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <td>ID</td>
-                            <td>Наименование</td>
-                            <td>Аудитория</td>
-                            <td>Статус</td>
-                        </tr>
-                    </thead>
-                    <tbody style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)">
-                    @foreach($tasks as $task)
-                    @if($task->status == 'Выдано')
-                        <tr class="bg-danger">
-                    @else
-                        <tr class="bg-success">
-                    @endif
-                            <td class="col-md-1">{{$task->id}}
+
+<div class="panel panel-primary col-md-5 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;">
+    <div class="panel-heading">Заявки</div>
+
+    <div class="panel-body" style="padding: 0px;">
+        <div class="" style="">
+            <table class="table">
+                <thead>
+                <tr class="active">
+                    <td>ID</td>
+                    <td>Заголовок</td>
+                    <td>Создал</td>
+                    <td>Приоритет</td>
+                </tr>
+                </thead>
+                <tbody style="">
+                @foreach($tasks as $task)
+                    <tr>
+                    {{--@if($task->priority_id == 1)--}}
+                        {{--<tr class="info">--}}
+                    {{--@elseif($task->priority_id == 2)--}}
+                        {{--<tr class="warning">--}}
+                    {{--@elseif($task->priority_id == 3)--}}
+                        {{--<tr class="danger">--}}
+                    {{--@endif--}}
+                            <td class="col-md-1">
+                                {{$task->id}}
                             </td>
+
                             <td class="col-md-3">
-                                <a href="{{ route('tasks.show', $task->id) }}">
-                                {{$task->elements}}
-                                </a>
+                                <a href="{{ route('tasks.show', $task->id) }}">{{$task->title}}</a>
                             </td>
-                            <td class="col-md-1">{{$task->aud}}
-                            </td>
-                            <td class="col-md-1">{{$task->status}}
-                            </td>
-                            <td class="col-md-4">
-                                <a href="{{ route('tasks.show', $task->id) }}">
-                                <button class="btn btn-success">Show</button>    
-                                </a>
-                    
-                                <a href="{{ route('tasks.edit', $task->id) }}">
-                                <button class="btn btn-warning">Edit</button>
-                                </a>
 
-
-                                
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['tasks.destroy', $task->id] ])!!}
-                                <button class="btn btn-danger cd" onclick="return confirm('Вы уверены?')">Delete</button>
-                                {!! Form::close() !!}
-                                
+                            <td class="col-md-1">
+                                {{$task->user($task->creator_id)->name}}
                             </td>
+
+                            <td class="col-md-1">
+                                {{$task->priority()->find($task->priority_id)->name}}
+                            </td>
+
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                {{ $tasks->links() }}
-            </div>
+                        @endforeach
+                </tbody>
+            </table>
+            {{ $tasks->links() }}
         </div>
     </div>
+</div>
 
 @endsection('content')

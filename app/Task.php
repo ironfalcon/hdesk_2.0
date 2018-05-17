@@ -40,9 +40,11 @@ class Task extends Model
     }
 
     //связь таска и пользователей
-    public function user()
+    public function user($id)
     {
-      return $this->belongsTo('App\User', 'id');
+//      return $this->belongsTo('App\User', 'id');
+
+     return  User::find($id);
     }
 
 
