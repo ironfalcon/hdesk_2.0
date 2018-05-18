@@ -13,12 +13,13 @@ class Task extends Model
 {
     protected $fillable = ['title', 'description', 'priority_id','create_date',
         'update_date', 'close_date', 'location_id', 'status_id', 'assigned_id',
-        'creator_id', 'coments_id', 'attachments'];
+        'creator_id', 'comments_id', 'attachments'];
 
     //связь таска и приоритета
-    public function priority()
+    public function priority($id)
     {
-      return $this->belongsTo('App\Priority', 'id');
+        return  Priority::find($id);
+//      return $this->belongsTo('App\Priority', 'id');
     }
 
     //связь таска и статуса
@@ -43,7 +44,6 @@ class Task extends Model
     public function user($id)
     {
 //      return $this->belongsTo('App\User', 'id');
-
      return  User::find($id);
     }
 

@@ -38,7 +38,7 @@
                             </td>
 
                             <td class="col-md-1">
-                                {{$task->priority()->find($task->priority_id)->name}}
+                                {{$task->priority($task->priority_id)->name}}
                             </td>
 
                         </tr>
@@ -81,7 +81,7 @@
                         </td>
 
                         <td class="col-md-1">
-                            {{$task->priority()->find($task->priority_id)->name}}
+                            {{$task->priority($task->priority_id)->name}}
                         </td>
 
                     </tr>

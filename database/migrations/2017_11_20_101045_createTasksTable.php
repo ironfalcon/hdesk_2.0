@@ -36,6 +36,7 @@ class CreateTasksTable extends Migration
             $table->integer('creator_id');
             $table->integer('comments_id')->nullable();
             $table->string('attachments')->nullable();
+            $table->timestamps();
         });
     }
 

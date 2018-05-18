@@ -10,6 +10,7 @@ use App\Task;
 use App\Http\Requests\createTaskRequest;
 use illuminate\Foundation\Validation\ValidatesRequests;
 use Gate;
+use Image;
 
 class TasksController extends Controller
 {
@@ -48,6 +49,14 @@ class TasksController extends Controller
             'creator_id' => 'required',
             'location_id' => 'required']);
 
+        if($request->file('photo')) {
+            $photo = $request->file('photo');
+            $filename = time() . "." . $photo->getClientOriginalExtension();
+            Image::make($photo)->save(public_path('/uploads/task_photo/' . $filename));
+            $photo = $filename;
+            $task = new Task;
+            $task->attachments = $photo;
+        }
         $task = new Task;
         $task->title = $request->title;
         $task->description = $request->description;
@@ -55,10 +64,12 @@ class TasksController extends Controller
         $task->create_date = Carbon::now('Europe/Samara');
         $task->update_date = Carbon::now('Europe/Samara');
         $task->location_id = $request->location_id;
-        $task->status_id = $request->status_id;
+        $task->update_date = '';
+        $task->close_date = '';
+
         $task->creator_id = $request->creator_id;
         $task->save();
-        return redirect()->route('news.index');
+        return redirect()->route('tasks.index');
 
 
 //        $table->increments('id');

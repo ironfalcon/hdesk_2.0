@@ -60,6 +60,22 @@ class TaskTableSeeder extends Seeder
 
         ]);
 
+        DB::table('tasks')->insert([
+            'title' => 'Все поломалось',
+            'description' => 'описание проблемы и подробности',
+            'priority_id' => 3,
+            'create_date' => Carbon::now('Europe/Samara'),
+            'update_date' => Carbon::now('Europe/Samara'),
+            'close_date' => Carbon::now('Europe/Samara'),
+            'location_id' => 3,
+            'status_id' => 3,
+            'assigned_id' => 1,
+            'creator_id' => 2,
+            'comments_id' => 2,
+            'attachments' => '',
+
+        ]);
+
 
     }
 }
