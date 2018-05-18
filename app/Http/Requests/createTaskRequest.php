@@ -24,10 +24,10 @@ class createTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'elements' => 'required',
-            'aud' => 'required',
-            'created_user' => 'required',
-            'description' => 'required'
+//            'elements' => 'required',
+//            'aud' => 'required',
+//            'created_user' => 'required',
+//            'description' => 'required'
         ];
     }
 }

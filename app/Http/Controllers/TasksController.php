@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Location;
+use App\Priority;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Task;
 use App\Http\Requests\createTaskRequest;
@@ -28,22 +31,52 @@ class TasksController extends Controller
         return view('tasks.index', ['tasks' => $tasks]);
     }
     
-//    public function create()
-//    {
-//        if(Gate::denies('isAdmin')){
-//            return redirect()->back();
-//        }
-//
-//        return view('tasks.create');
-//    }
-//
-//    public function store(createTaskRequest $request)
-//    {
-//
-//        Task::create($request->all());
-//        return redirect()->route('tasks.index');
-//    }
-//
+    public function create()
+    {
+
+        $priorities = Priority::all();
+        $locations = Location::all();
+        return view('tasks.create', ['priorities' => $priorities, 'locations' => $locations ]);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'priority_id' => 'required',
+            'creator_id' => 'required',
+            'location_id' => 'required']);
+
+        $task = new Task;
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->priority_id = $request->priority_id;
+        $task->create_date = Carbon::now('Europe/Samara');
+        $task->update_date = Carbon::now('Europe/Samara');
+        $task->location_id = $request->location_id;
+        $task->status_id = $request->status_id;
+        $task->creator_id = $request->creator_id;
+        $task->save();
+        return redirect()->route('news.index');
+
+
+//        $table->increments('id');
+//        $table->string('title');
+//        $table->text('description');
+//        $table->integer('priority_id')->default(2);
+//        $table->string('create_date');
+//        $table->string('update_date')->nullable();
+//        $table->string('close_date')->nullable();
+//        $table->integer('location_id')->default(1);
+//        $table->integer('status_id')->default(1);
+//        $table->integer('assigned_id')->default(1);
+//        $table->integer('creator_id');
+//        $table->integer('comments_id')->nullable();
+//        $table->string('attachments')->nullable();
+        
+    }
+
 //    public function edit($id)
 //    {
 //        $myTask = Task::find($id);
