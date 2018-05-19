@@ -10,9 +10,10 @@ class Comment extends Model
 {
 
   //связь комента и пользователя
-  public function user()
+  public function user($id)
   {
-    return $this->belongsTo('App\User', 'id');
+      return User::find($id);
+    //return $this->belongsTo('App\User', 'id');
   }
 
   //связь комента и таска

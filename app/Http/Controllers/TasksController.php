@@ -10,7 +10,9 @@ use App\Task;
 use App\Http\Requests\createTaskRequest;
 use illuminate\Foundation\Validation\ValidatesRequests;
 use Gate;
+use Illuminate\Support\Facades\Auth;
 use Image;
+use App\Comment;
 
 class TasksController extends Controller
 {
@@ -28,8 +30,10 @@ class TasksController extends Controller
             return redirect()->back()->with(['message'=>'У вас нет прав']);
         }
 
+        $unsigned_tasks = Task::where('assigned_id', 1)->orderBy('create_date','desc')->paginate(15);
+        $my_tasks = Task::where('assigned_id', Auth::user()->id)->orderBy('create_date','desc')->paginate(15);
         $tasks = Task::orderBy('create_date','desc')->paginate(15);
-        return view('tasks.index', ['tasks' => $tasks]);
+        return view('tasks.index', ['unsigned_tasks' => $unsigned_tasks, 'my_tasks' => $my_tasks, 'tasks' => $tasks]);
     }
     
     public function create()
@@ -107,13 +111,15 @@ class TasksController extends Controller
 //        $myTask->save();
 //        return redirect()->route('tasks.index');
 //    }
-//
-//    public function show($id)
-//    {
-//        $myTask = Task::find($id);
-//        return view('tasks.show', ['task' => $myTask]);
-//    }
-//
+
+    public function show($id)
+    {
+        $comments = Comment::where('comment_to_id', $id)->get();
+
+        $myTask = Task::find($id);
+        return view('tasks.show', ['task' => $myTask, 'comments' => $comments]);
+    }
+
 //    public function destroy($id)
 //    {
 //        Task::find($id)->delete();

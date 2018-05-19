@@ -9,6 +9,7 @@ use App\Comment;
 use App\Status;
 use App\User;
 
+
 class Task extends Model
 {
     protected $fillable = ['title', 'description', 'priority_id','create_date',
@@ -29,15 +30,17 @@ class Task extends Model
     }
 
     //связь таска и локации пользователя
-    public function location()
+    public function location($id)
     {
-      return $this->belongsTo('App\Location', 'id');
+        return Location::find($id);
+      //return $this->belongsTo('App\Location', 'id');
     }
 
     //связь таска и коментариев
-    public function comments()
+    public function comments($id)
     {
-      return $this->hasMany('App\Comment', 'comment_to_id');
+        return Comment::where('comment_to_id', $id);
+      //return $this->hasMany('App\Comment', 'comment_to_id');
     }
 
     //связь таска и пользователей
