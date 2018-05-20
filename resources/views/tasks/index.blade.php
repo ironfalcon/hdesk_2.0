@@ -8,7 +8,7 @@
 }
 </style>
 <div class="row">
-<div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;">
+<div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
     <div class="panel-heading">Заявки не назначеные</div>
 
     <div class="panel-body" style="padding: 0px;">
@@ -51,7 +51,7 @@
 </div>
 
 
-<div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;">
+<div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
     <div class="panel-heading">Заявки назначеные мне</div>
 
     <div class="panel-body" style="padding: 0px;">
@@ -96,7 +96,7 @@
 </div>
 
 <div class="row">
-<div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;">
+<div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
     <div class="panel-heading">Все заявки</div>
 
     <div class="panel-body" style="padding: 0px;">

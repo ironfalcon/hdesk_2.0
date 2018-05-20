@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'user',
+            'name' => 'Не назначен',
             'group_id' => Group::where('name', 'б1-ИФСТ41')->value('id'),
             'permission_id' => 1, 
             'email' => str_random(3).'@gmail.com',

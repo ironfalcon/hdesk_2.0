@@ -52,16 +52,15 @@ class TasksController extends Controller
             'priority_id' => 'required',
             'creator_id' => 'required',
             'location_id' => 'required']);
-
+        $task = new Task;
         if($request->file('photo')) {
             $photo = $request->file('photo');
             $filename = time() . "." . $photo->getClientOriginalExtension();
             Image::make($photo)->save(public_path('/uploads/task_photo/' . $filename));
             $photo = $filename;
-            $task = new Task;
             $task->attachments = $photo;
         }
-        $task = new Task;
+
         $task->title = $request->title;
         $task->description = $request->description;
         $task->priority_id = $request->priority_id;

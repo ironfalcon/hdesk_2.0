@@ -10,9 +10,6 @@
             </div>
         </div>
         <div class="row col-md-8 col-md-offset-2">
-
-
-
                {!! Form::open(['route' => ['tasks.store'], 'files' => true]) !!}
                <div class="form-group">
                    <label for="title">Заголовок:</label>

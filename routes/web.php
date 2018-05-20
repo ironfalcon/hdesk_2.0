@@ -24,6 +24,7 @@ Auth::routes();
 Route::get('profile', 'UserController@profile')->name('profile');
 Route::get('profilebg', 'UserController@profilebg')->name('profilebg');
 Route::post('profile', 'UserController@update_avatar');
+Route::post('comment', 'CommentController@add_comment')->name('add_comment');
 
 Route::get('messages/create', 'MessageController@create')->name('messages.create');
 Route::post('messages', 'MessageController@store')->name('messages.store');
