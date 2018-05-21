@@ -29,11 +29,11 @@ body{
     font-family: 'Roboto', sans-serif;
 
     @guest
-    background-image: url('backgrounds/06.jpg');
+    background-image: url('http://127.0.0.1:8000/backgrounds/06.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     @else
-    background-image: url('backgrounds/{{Auth::user()->bg_image}}');
+    background-image: url('http://127.0.0.1:8000/backgrounds/{{Auth::user()->bg_image}}');
     background-repeat: no-repeat;
     background-attachment: fixed;
     @endguest
@@ -146,7 +146,7 @@ form{
     border-width: 0 0 0px;
 }
 .mid-ground{
-    background-image:url('middleground/11.png');
+    background-image:url('http://127.0.0.1:8000/middleground/11.png');
     padding: 30px 30px;
 }
 
