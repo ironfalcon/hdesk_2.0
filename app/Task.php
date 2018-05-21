@@ -8,6 +8,7 @@ use App\Location;
 use App\Comment;
 use App\Status;
 use App\User;
+Use App\TaskLog;
 
 
 class Task extends Model
@@ -24,9 +25,10 @@ class Task extends Model
     }
 
     //связь таска и статуса
-    public function status()
+    public function status($id)
     {
-      return $this->belongsTo('App\Status', 'id');
+        return Status::find($id);
+        //return $this->belongsTo('App\Status', 'id');
     }
 
     //связь таска и локации пользователя
@@ -49,6 +51,13 @@ class Task extends Model
 //      return $this->belongsTo('App\User', 'id');
      return  User::find($id);
     }
+
+    public function workLogs($id)
+    {
+        return TaskLog::where('task_id', $id);
+        //return $this->hasMany('App\Comment', 'comment_to_id');
+    }
+
 
 
 }

@@ -109,5 +109,15 @@ class UserTableSeeder extends Seeder
             'created_at' => Carbon::now('Europe/Samara'),
             'updated_at' => Carbon::now('Europe/Samara'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'admin2',
+            'permission_id' => 3,
+            'email' => str_random(3).'@gmail.com',
+            'password' => bcrypt(123456),
+            'phone' => 9874513441,
+            'created_at' => Carbon::now('Europe/Samara'),
+            'updated_at' => Carbon::now('Europe/Samara'),
+        ]);
     }
 }
