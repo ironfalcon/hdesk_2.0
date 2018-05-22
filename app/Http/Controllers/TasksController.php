@@ -29,14 +29,19 @@ class TasksController extends Controller
     public function index()
     {   //проверка, может ли пользователь
         // смотреть данный раздел
-        if(Gate::denies('isAdmin')){
-            return redirect()->back()->with(['message'=>'У вас нет прав']);
-        }
+//        if(Gate::denies('isAdmin')){
+//            return redirect()->back()->with(['message'=>'У вас нет прав']);
+//        }
 
-        $unsigned_tasks = Task::where('assigned_id', 1)->orderBy('create_date','desc')->paginate(15);
-        $my_tasks = Task::where('assigned_id', Auth::user()->id)->orderBy('create_date','desc')->paginate(15);
+        $unsigned_tasks = Task::where('assigned_id', 1)->where('status_id','!=', 4)->orderBy('create_date','desc')->paginate(15);
+        $my_tasks = Task::where('assigned_id', Auth::user()->id)->
+                    where('status_id','!=', 4)->
+                    orderBy('create_date','desc')->
+                    paginate(15);
+        $user_tasks = Task::where('creator_id', Auth::user()->id)->orderBy('create_date','desc')->paginate(15);
         $tasks = Task::orderBy('create_date','desc')->paginate(15);
-        return view('tasks.index', ['unsigned_tasks' => $unsigned_tasks, 'my_tasks' => $my_tasks, 'tasks' => $tasks]);
+        return view('tasks.index', ['unsigned_tasks' => $unsigned_tasks, 'my_tasks' => $my_tasks,
+            'tasks' => $tasks, 'user_tasks' => $user_tasks]);
     }
     
     public function create()
@@ -107,11 +112,6 @@ class TasksController extends Controller
 
     public function update(Request $request, $id)
     {
-//        $this->validate($request, [
-//            'elements' => 'required',
-//            'aud' => 'required',
-//            'updated_user' => 'required',
-//            'description' => 'required']);
 
         $task = Task::find($id);
         $workLog = new TaskLog;
@@ -123,8 +123,18 @@ class TasksController extends Controller
             $prioritet = $prioritet->name;
             $user = User::find($request->user_id);
             $user = $user->name;
-            $workLog->action = "Пользователь $user изменил приоритет c $old_priority на $prioritet";
+            $workLog->action = "Пользователь $user изменил приоритет c <$old_priority> на <$prioritet>";
             $task->priority_id = $request->priority_id;
+        }
+        if($request->description) {
+            $old_description = $task->description;
+            $workLog->user_id = $request->user_id;
+            $workLog->task_id = $id;
+            $description = $request->description;
+            $user = User::find($request->user_id);
+            $user = $user->name;
+            $workLog->action = "Пользователь $user изменил описание c <$old_description> на <$description>";
+            $task->description = $request->description;
         }
         if($request->status_id) {
             $old_status = $task->status($task->status_id)->name;
@@ -134,8 +144,12 @@ class TasksController extends Controller
             $status = $status->name;
             $user = User::find($request->user_id);
             $user = $user->name;
-            $workLog->action = "Пользователь $user изменил статус c $old_status на: $status";
+            $workLog->action = "Пользователь $user изменил статус c <$old_status> на  <$status>";
             $task->status_id = $request->status_id;
+            if($request->status_id == 4){
+                $task->close_date = Carbon::now('Europe/Samara');
+                $workLog->action = $workLog->action." ЗАЯВКА ЗАКРЫТА";
+            }
         }
         if($request->assigned_id) {
             $old_assigned = $task->user($task->assigned_id);
@@ -146,7 +160,7 @@ class TasksController extends Controller
             $assign_user = $assign_user->name;
             $user = User::find($request->user_id);
             $user = $user->name;
-            $workLog->action = "Пользователь $user изменил исполняющего c $old_assigned на: $assign_user";
+            $workLog->action = "Пользователь $user изменил исполняющего c <$old_assigned> на: <$assign_user>";
             $task->assigned_id = $request->assigned_id;
         }
 
@@ -158,6 +172,12 @@ class TasksController extends Controller
 
     public function show($id)
     {
+        $task = Task::find($id);
+        if((Auth::user()->permission()->value('name') == 'admin') || ($task->creator_id == Auth::user()->id)){
+        }else{
+            return redirect()->back()->with(['message'=>'У вас нет прав']);
+        }
+
         $priorities = Priority::all();
         $locations = Location::all();
         $statuses = Status::all();

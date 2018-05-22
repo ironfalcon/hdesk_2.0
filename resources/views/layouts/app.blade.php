@@ -168,8 +168,12 @@ form{
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}" style="color:black;">
+                    <a class="navbar-brand" href="{{ url('/tasks') }}" style="color:black;">
                         {{ config('app.name', 'H-desk') }}
+                    </a>
+
+                    <a href="{{ url('/tasks/create') }}" class="btn" style="color:black;padding: 15px 15px;">
+                        <span class="glyphicon glyphicon-plus"></span> Создать заявку
                     </a>
                 </div>
 

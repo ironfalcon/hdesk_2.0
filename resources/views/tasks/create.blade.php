@@ -6,7 +6,7 @@
     <div class="container mid-ground" style="  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h3>Выдаваемое оборудование</h3>
+                <h3>Новая заявка</h3>
             </div>
         </div>
         <div class="row col-md-8 col-md-offset-2">

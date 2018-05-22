@@ -3,7 +3,6 @@
 @section('content')
 @include('errors')
 
-
 <div class="panel panel-primary col-md-10 col-md-offset-1" style="padding-left: 0px;padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
     <div class="panel-heading">Заявка {{$task->id}} | {{$task->title}}
         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#history" style="float: right;margin-right: -10px;margin-left: 1px;margin-top: -5px">
@@ -19,18 +18,28 @@
                 <div class="col-md-7" style=" box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin: 4px 15px;padding: 10px 10px;">
                     <h1>{{$task->id}} | {{$task->title}}</h1>
                     <hr>
-                    <p>{{$task->description}}</p>
+                    <p>Описание: {{$task->description}}
+                        @if((Auth::user()->permission()->value('name') == 'admin') || ($task->creator_id == Auth::user()->id))
+                            <a href="#" data-toggle="modal" data-target="#changeDescription">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        @endif
+                    </p>
                     <hr>
                     <p>Приоритет: {{$task->priority($task->priority_id)->name}}
-                        <a href="#" data-toggle="modal" data-target="#changePriority">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                        @if(Auth::user()->permission()->value('name') == 'admin')
+                            <a href="#" data-toggle="modal" data-target="#changePriority">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        @endif
                     </p>
                     <hr>
                     <p>Статус выполнения: {{$task->status($task->status_id)->name}}
-                        <a href="#" data-toggle="modal" data-target="#changeStatus">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                        @if(Auth::user()->permission()->value('name') == 'admin')
+                            <a href="#" data-toggle="modal" data-target="#changeStatus">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        @endif
                     </p>
                     <hr>
                     <p>Место нахождения: {{$task->location($task->location_id)->name}}</p>
@@ -48,9 +57,11 @@
                     <p>Создал: {{$task->user($task->creator_id)->name}}</p>
                     <hr>
                     <p>Исполняет: {{$task->user($task->assigned_id)->name}}
-                        <a href="#" data-toggle="modal" data-target="#changeAssigned">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                        @if(Auth::user()->permission()->value('name') == 'admin')
+                            <a href="#" data-toggle="modal" data-target="#changeAssigned">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        @endif
                     </p>
 
                 </div>
@@ -65,11 +76,13 @@
                     <img src="/uploads/avatars/{{$comment->user($comment->user_id)->avatar}}" style=" width:50px; height:50px; border-radius:50%;">
                 </div>
                <div class="col-md-10">
-                   {!! Form::open(['method' => 'DELETE', 'route' => ['delete_comment', $comment->id] ])!!}
-                   <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
-                   <input type="hidden" class="form-control" name="task_id" value="{{ $task->id }}">
-                   <button class="btn btn-link" onclick="return confirm('Вы уверены?')" style="float:right;">x</button>
-                   {!! Form::close() !!}
+                   @if((Auth::user()->permission()->value('name') == 'admin') || ($comment->user_id == Auth::user()->id))
+                        {!! Form::open(['method' => 'DELETE', 'route' => ['delete_comment', $comment->id] ])!!}
+                        <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" class="form-control" name="task_id" value="{{ $task->id }}">
+                        <button class="btn btn-link" onclick="return confirm('Вы уверены?')" style="float:right;">x</button>
+                        {!! Form::close() !!}
+                   @endif
                     <p>{{$comment->user($comment->user_id)->name}}</p>
                     <p> {{$comment->text}}</p>
                     <p> {{$comment->post_date}}</p>
@@ -201,6 +214,32 @@
                                     <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
+                            <br>
+                            <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
+                            <button class="btn btn-success">Отправить</button>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        {{--Изменение описания--}}
+        <div class="modal fade" id="changeDescription" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Изменение описания</h4>
+                    </div>
+                    <div class="modal-body">
+                        {!! Form::open(['route' => ['tasks.update', $task->id], 'method' => 'PUT']) !!}
+                        <div class="form-group">
+                            <label for="description">Описание заявки:</label>
+                            <br>
+                            <textarea name="description" id="description" rows="5" class="form-control">{{  $task->description }}</textarea>
                             <br>
                             <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
                             <button class="btn btn-success">Отправить</button>

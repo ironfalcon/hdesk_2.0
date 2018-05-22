@@ -22,7 +22,7 @@ class CommentController extends Controller
         $workLog->task_id = $request->comment_to_id;
         $user = User::find($request->user_id);
         $user = $user->name;
-        $workLog->action = "Пользователь $user добавил комментарий< $request->text >";
+        $workLog->action = "Пользователь $user добавил комментарий<$request->text>";
         $workLog->save();
 
         $comment = new Comment;
@@ -56,7 +56,7 @@ class CommentController extends Controller
         $workLog = new TaskLog();
         $workLog->user_id = $deleted_user->id;
         $workLog->task_id = $task_id;
-        $workLog->action = "Пользователь $deleted_user->name удалил комментарий пользователя $create_user_id->name < $comment_text >";
+        $workLog->action = "Пользователь $deleted_user->name удалил комментарий пользователя $create_user_id->name <$comment_text>";
         $workLog->save();
 
         $comment->delete();

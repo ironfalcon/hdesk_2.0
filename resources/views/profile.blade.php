@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="back">
-<div class="container" style="background-image:url('http://h-desk/middleground/11.png');padding: 30px 30px;">
+<div class="container" style="background-image:url('http://127.0.0.1:8000/middleground/11.png');padding: 30px 30px;">
     <div class="row">
         <div class="col-xs-12" >
         <img src="/uploads/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius: 50%; margin-right: 25px;">
