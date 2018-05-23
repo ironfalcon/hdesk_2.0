@@ -32,6 +32,18 @@ class TasksController extends Controller
 //        if(Gate::denies('isAdmin')){
 //            return redirect()->back()->with(['message'=>'У вас нет прав']);
 //        }
+        $high_task = Task::where('priority_id', 1)->count();
+        $mid_task = Task::where('priority_id', 2)->count();
+        $low_task = Task::where('priority_id', 3)->count();
+
+        $users = User::all('name');
+
+        $assign_task = Task::where('assigned_id', Auth::user()->id)->count();
+        $closed_task = Task::where('assigned_id', Auth::user()->id)->where('status_id',4)->count();
+
+        $admin1 = Task::where('assigned_id', 8)->where('status_id',4)->count();
+        $admin2 = Task::where('assigned_id', 9)->where('status_id',4)->count();
+        $admin3 = Task::where('assigned_id', 7)->where('status_id',4)->count();
 
         $unsigned_tasks = Task::where('assigned_id', 1)->where('status_id','!=', 4)->orderBy('create_date','desc')->paginate(15);
         $my_tasks = Task::where('assigned_id', Auth::user()->id)->
@@ -41,7 +53,9 @@ class TasksController extends Controller
         $user_tasks = Task::where('creator_id', Auth::user()->id)->orderBy('create_date','desc')->paginate(15);
         $tasks = Task::orderBy('create_date','desc')->paginate(15);
         return view('tasks.index', ['unsigned_tasks' => $unsigned_tasks, 'my_tasks' => $my_tasks,
-            'tasks' => $tasks, 'user_tasks' => $user_tasks]);
+            'tasks' => $tasks, 'user_tasks' => $user_tasks, 'high_task' => $high_task,
+            'mid_task' => $mid_task, 'low_task' => $low_task, 'assign_task' => $assign_task,
+            'closed_task' => $closed_task, 'admin1' => $admin1, 'admin2' => $admin2, 'admin3' => $admin3]);
     }
     
     public function create()
