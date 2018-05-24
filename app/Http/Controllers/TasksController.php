@@ -55,6 +55,12 @@ class TasksController extends Controller
         $admin2 = Task::where('assigned_id', 9)->where('status_id',4)->count();
         $admin3 = Task::where('assigned_id', 7)->where('status_id',4)->count();
 
+
+        //данные для виджета колличество не закрытых задач
+        $no_close_admin1 = (Task::where('assigned_id', 8)->count()) - ($admin1);
+        $no_close_admin2 = (Task::where('assigned_id', 9)->count()) - ($admin2);
+        $no_close_admin3 = (Task::where('assigned_id', 7)->count()) - ($admin3);
+
         $unsigned_tasks = Task::where('assigned_id', 1)->where('status_id','!=', 4)->orderBy('create_date','desc')->paginate(15, ['*'], 'unsigned_tasks');
         //$unsigned_tasks->setPageName('unsign_page');
         $my_tasks = Task::where('assigned_id', Auth::user()->id)->
@@ -69,7 +75,8 @@ class TasksController extends Controller
             'tasks' => $tasks, 'user_tasks' => $user_tasks, 'high_task' => $high_task,
             'mid_task' => $mid_task, 'low_task' => $low_task, 'assign_task' => $assign_task,
             'closed_task' => $closed_task, 'admin1' => $admin1, 'admin2' => $admin2, 'admin3' => $admin3,
-            ]);
+            'no_close_admin1' => $no_close_admin1, 'no_close_admin2' => $no_close_admin2,
+            'no_close_admin3' => $no_close_admin3]);
     }
     
     public function create()

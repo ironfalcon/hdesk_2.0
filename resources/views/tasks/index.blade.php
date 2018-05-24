@@ -113,6 +113,8 @@
     {{--</div>--}}
 
 
+
+
 </div>
 
 
@@ -178,6 +180,16 @@
 
         <div class="panel-body" style="padding: 0px;">
             <canvas id="admin_stat"></canvas>
+
+        </div>
+    </div>
+
+
+    <div class="panel panel-primary" style="margin: 20px 20px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
+        <div class="panel-heading">Не закрыто администраторами</div>
+
+        <div class="panel-body" style="padding: 0px;">
+            <canvas id="no_close"></canvas>
 
         </div>
     </div>
@@ -251,6 +263,8 @@
                 </div>
             </div>
         </div>
+
+
 
 </div>
 
@@ -394,6 +408,55 @@
             // tooltips:{
             //     enabled:true
             // }
+        }
+    });
+</script>
+
+{{--не закрыто--}}
+<script>
+    let myChart3 = document.getElementById('no_close').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 12;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart3 = new Chart(myChart3, {
+        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+            labels:['Админ', 'Админ2', 'Админ3'],
+            datasets:[{
+                label:'Не закрыто',
+                data:[
+                    {{$no_close_admin1}},
+                    {{$no_close_admin2}},
+                    {{$no_close_admin3}}
+                ],
+                //backgroundColor:'green',
+                backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)'
+                    // 'rgba(75, 192, 192, 0.6)',
+                    // 'rgba(153, 102, 255, 0.6)',
+                    // 'rgba(255, 159, 64, 0.6)',
+                    // 'rgba(255, 99, 132, 0.6)'
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
+            }]
+        },
+        options:{
+
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
         }
     });
 </script>
