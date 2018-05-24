@@ -16,6 +16,7 @@ use Gate;
 use Illuminate\Support\Facades\Auth;
 use Image;
 use App\Comment;
+use Illuminate\Pagination;
 
 class TasksController extends Controller
 {
@@ -36,7 +37,16 @@ class TasksController extends Controller
         $mid_task = Task::where('priority_id', 2)->count();
         $low_task = Task::where('priority_id', 3)->count();
 
-        $users = User::all('name');
+//        //выборка для виджета созданные таски за неелю
+//        $Tas = Task::find(2);
+//        $Tas = $Tas->create_date;
+//        $now = Carbon::now();
+//        //dd($month->weekOfYear);
+//        //dd($now->dayOfYear - 1);
+//        $now->;
+//
+//       // $today = Task::where('create_date',);
+
 
         $assign_task = Task::where('assigned_id', Auth::user()->id)->count();
         $closed_task = Task::where('assigned_id', Auth::user()->id)->where('status_id',4)->count();
@@ -45,17 +55,21 @@ class TasksController extends Controller
         $admin2 = Task::where('assigned_id', 9)->where('status_id',4)->count();
         $admin3 = Task::where('assigned_id', 7)->where('status_id',4)->count();
 
-        $unsigned_tasks = Task::where('assigned_id', 1)->where('status_id','!=', 4)->orderBy('create_date','desc')->paginate(15);
+        $unsigned_tasks = Task::where('assigned_id', 1)->where('status_id','!=', 4)->orderBy('create_date','desc')->paginate(15, ['*'], 'unsigned_tasks');
+        //$unsigned_tasks->setPageName('unsign_page');
         $my_tasks = Task::where('assigned_id', Auth::user()->id)->
                     where('status_id','!=', 4)->
                     orderBy('create_date','desc')->
-                    paginate(15);
+                    paginate(15, ['*'], 'my_tasks');
+        //$my_tasks->setPageName('my_task_page');
         $user_tasks = Task::where('creator_id', Auth::user()->id)->orderBy('create_date','desc')->paginate(15);
-        $tasks = Task::orderBy('create_date','desc')->paginate(15);
+        $tasks = Task::orderBy('create_date','desc')->paginate(15, ['*'], 'tasks');
+        //$tasks->setPageName('tasks_page');
         return view('tasks.index', ['unsigned_tasks' => $unsigned_tasks, 'my_tasks' => $my_tasks,
             'tasks' => $tasks, 'user_tasks' => $user_tasks, 'high_task' => $high_task,
             'mid_task' => $mid_task, 'low_task' => $low_task, 'assign_task' => $assign_task,
-            'closed_task' => $closed_task, 'admin1' => $admin1, 'admin2' => $admin2, 'admin3' => $admin3]);
+            'closed_task' => $closed_task, 'admin1' => $admin1, 'admin2' => $admin2, 'admin3' => $admin3,
+            ]);
     }
     
     public function create()

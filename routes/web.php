@@ -35,4 +35,5 @@ Route::get('schedules', 'ScheduleController@index')->name('schedules.index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/autocomplete-ajax', 'SearchController@ajaxData')->name('autocomplete.ajax');
+Route::get('/task_search', 'SearchController@task_search')->name('task_search');
 

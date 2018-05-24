@@ -14,7 +14,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
+    <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    v
     <!-- Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <!-- fonts -->
@@ -172,10 +173,16 @@ form{
                     <a class="navbar-brand" href="{{ url('/tasks') }}" style="color:black;">
                         {{ config('app.name', 'H-desk') }}
                     </a>
-
+                    @guest
+                    @else
                     <a href="{{ url('/tasks/create') }}" class="btn" style="color:black;padding: 15px 15px;">
                         <span class="glyphicon glyphicon-plus"></span> Создать заявку
                     </a>
+
+                        <span><input type="text" id="search" class="" placeholder="Поиск" autocomplete="off"
+                            style="border-radius: 4px; border: 1px solid #ccc;box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+                            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;"></span>
+                    @endguest
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -191,6 +198,7 @@ form{
                             <li><a href="{{ route('login') }}" style="color:black;">Войти</a></li>
                             <li><a href="{{ route('register') }}" style="color:black;">Регистрация</a></li>
                         @else
+
                             <li class="dropdown" >
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                                    aria-haspopup="true" style="position:relative; padding-left:50px; color:black; background-color: #3498db;">

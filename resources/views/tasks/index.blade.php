@@ -7,7 +7,7 @@
     display:inline;
 }
 </style>
-<div class="container-fluid">
+<div class="container">
 
 @if(Auth::user()->permission()->value('name') == 'admin')
 <div class="row col-md-7 col-lg-7">
@@ -183,13 +183,14 @@
     </div>
 
 
+
 </div>
 
 
 
 @elseif(Auth::user()->permission()->value('name') == 'stud')
-
-    <div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
+<div class="row col-md-7 col-lg-7">
+    <div class="panel panel-primary" style="margin: 20px 20px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
         <div class="panel-heading">Мои заявки</div>
 
         <div class="panel-body" style="padding: 0px;">
@@ -239,15 +240,21 @@
     </div>
     </div>
 
-    {{--Отображение заявок пользователя Созданные/закрытые--}}
-    <div class="panel panel-primary col-md-4 col-md-offset-1" style="padding-left: 0px; padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
-        <div class="panel-heading">Мои заявки</div>
+        <div class="row col-md-5 col-lg-5">
+            {{--Отображение заявок пользователя Созданные/закрытые--}}
+            <div class="panel panel-primary" style="margin: 20px 20px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
+                <div class="panel-heading">Мои заявки</div>
 
-        <div class="panel-body" style="padding: 0px;">
-            <canvas id="myTask"></canvas>
+                <div class="panel-body" style="padding: 0px;">
+                    <canvas id="myTask"></canvas>
 
+                </div>
+            </div>
         </div>
-    </div>
+
+</div>
+
+
 
 
     <script>
@@ -353,29 +360,40 @@
             }]
         },
         options:{
-            title:{
-                display:true,
-                text:'',
-                fontSize:14
+
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
             },
-            legend:{
-                display:true,
-                position:'right',
-                labels:{
-                    fontColor:'#000'
-                }
-            },
-            layout:{
-                padding:{
-                    left:50,
-                    right:0,
-                    bottom:0,
-                    top:0
-                }
-            },
-            tooltips:{
-                enabled:true
-            }
+
+
+
+            // title:{
+            //     display:true,
+            //     text:'',
+            //     fontSize:14
+            // },
+            // legend:{
+            //     display:true,
+            //     position:'right',
+            //     labels:{
+            //         fontColor:'#000'
+            //     }
+            // },
+            // layout:{
+            //     padding:{
+            //         left:50,
+            //         right:0,
+            //         bottom:0,
+            //         top:0
+            //     }
+            // },
+            // tooltips:{
+            //     enabled:true
+            // }
         }
     });
 </script>
@@ -441,6 +459,43 @@
                 enabled:true
             }
         }
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        var bloodhound = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/task_search?q=%QUERY%',
+                wildcard: '%QUERY%'
+            },
+        });
+
+        $('#search').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+            name: 'users',
+            source: bloodhound,
+            display: function(data) {
+                return data.title  //Input value to be set when you select a suggestion.
+            },
+            templates: {
+                empty: [
+                    '<div class="list-group search-results-dropdown"><div class="list-group-item">Совпадений не найдено.</div></div>'
+                ],
+                header: [
+                    '<div class="list-group search-results-dropdown" style="color:black; background-color: rgba(52, 152, 219, .2); ">'
+                ],
+                suggestion: function(data) {
+                    return '<div style="font-weight:normal; margin-top:-10px ! important;" class="list-group-item">' + '<a href="/tasks/' + data.id + '">' + data.title + '</a>' + '</div></div>'
+                }
+            }
+        });
     });
 </script>
 

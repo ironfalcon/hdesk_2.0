@@ -62,7 +62,7 @@
                        </div>
                        <div id="collapse2" class="panel-collapse collapse">
                            <div class="panel-body">
-                           <input placeholder="Search Text" class="form-control" id="search_text" name="name" type="text" autocomplete="off">
+                           <input placeholder="Search Text" class="form-control" id="search_text" name="text" type="text" autocomplete="off">
                            
                            <br>
                            <br>

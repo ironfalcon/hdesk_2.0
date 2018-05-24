@@ -2,8 +2,8 @@
 
 @section('content')
 @include('errors')
-
-<div class="panel panel-primary col-md-10 col-md-offset-1" style="padding-left: 0px;padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
+<div class="container">
+<div class="panel panel-primary col-md-12" style="padding-left: 0px;padding-right: 0px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;">
     <div class="panel-heading">Заявка {{$task->id}} | {{$task->title}}
         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#history" style="float: right;margin-right: -10px;margin-left: 1px;margin-top: -5px">
             <span class="glyphicon glyphicon-list-alt"></span> История
@@ -71,11 +71,13 @@
         <div class="row" style=" margin-left: 0px; margin-right: 0px;margin-bottom: 10px;">
             @foreach($comments as $comment)
             <div class="col-md-7" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); margin: 5px 15px; padding: 10px 10px;">
-                <div class="row">
+                <div class="row col-md-3">
                 <div class="col-md-2 col-sm-2 col-xs-2" style="height: 100%;">
                     <img src="/uploads/avatars/{{$comment->user($comment->user_id)->avatar}}" style=" width:50px; height:50px; border-radius:50%;">
                 </div>
-               <div class="col-md-10">
+                </div>
+                <div class="row col-md-10">
+               <div class="col-md-12">
                    @if((Auth::user()->permission()->value('name') == 'admin') || ($comment->user_id == Auth::user()->id))
                         {!! Form::open(['method' => 'DELETE', 'route' => ['delete_comment', $comment->id] ])!!}
                         <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
@@ -272,6 +274,7 @@
 
 
     </div>
+</div>
 </div>
 
 @endsection('content')
