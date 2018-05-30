@@ -51,6 +51,10 @@ class TasksController extends Controller
         $assign_task = Task::where('assigned_id', Auth::user()->id)->count();
         $closed_task = Task::where('assigned_id', Auth::user()->id)->where('status_id',4)->count();
 
+        //для виджета пользователя
+        $user_created_task = Task::where('creator_id', Auth::user()->id)->count();
+        $user_closed_task = Task::where('creator_id', Auth::user()->id)->where('status_id',4)->count();
+
         $admin1 = Task::where('assigned_id', 8)->where('status_id',4)->count();
         $admin2 = Task::where('assigned_id', 9)->where('status_id',4)->count();
         $admin3 = Task::where('assigned_id', 7)->where('status_id',4)->count();
@@ -76,7 +80,8 @@ class TasksController extends Controller
             'mid_task' => $mid_task, 'low_task' => $low_task, 'assign_task' => $assign_task,
             'closed_task' => $closed_task, 'admin1' => $admin1, 'admin2' => $admin2, 'admin3' => $admin3,
             'no_close_admin1' => $no_close_admin1, 'no_close_admin2' => $no_close_admin2,
-            'no_close_admin3' => $no_close_admin3]);
+            'no_close_admin3' => $no_close_admin3, 'user_created_task' => $user_created_task,
+            'user_closed_task' => $user_closed_task]);
     }
     
     public function create()
@@ -197,6 +202,34 @@ class TasksController extends Controller
             $user = $user->name;
             $workLog->action = "Пользователь $user изменил исполняющего c <$old_assigned> на: <$assign_user>";
             $task->assigned_id = $request->assigned_id;
+        }
+
+        if($request->location_id) {
+            $old_location = $task->location($task->location_id);
+            $old_location = $old_location->name;
+            $workLog->user_id = $request->user_id;
+            $workLog->task_id = $id;
+            $location = LOcation::find($request->location_id);
+            $location = $location->name;
+            $user = User::find($request->user_id);
+            $user = $user->name;
+            $workLog->action = "Пользователь $user изменил локацию c <$old_location> на: <$location>";
+            $task->location_id = $request->location_id;
+        }
+
+        if($request->file('photo')) {
+            $workLog->user_id = $request->user_id;
+            $workLog->task_id = $id;
+            $user = User::find($request->user_id);
+            $user = $user->name;
+
+            $photo = $request->file('photo');
+            $filename = time() . "." . $photo->getClientOriginalExtension();
+            Image::make($photo)->save(public_path('/uploads/task_photo/' . $filename));
+            $photo = $filename;
+            $task->attachments = $photo;
+            
+            $workLog->action = "Пользователь $user изменил прикрепленное изображение";
         }
 
         $task->update_date = Carbon::now('Europe/Samara');

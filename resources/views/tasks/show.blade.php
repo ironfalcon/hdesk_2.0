@@ -42,9 +42,19 @@
                         @endif
                     </p>
                     <hr>
-                    <p>Место нахождения: {{$task->location($task->location_id)->name}}</p>
+                    <p>Место нахождения: {{$task->location($task->location_id)->name}}
+                    @if(Auth::user()->permission()->value('name') == 'admin')
+                            <a href="#" data-toggle="modal" data-target="#changeLocation">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        @endif
+                    </p>
                     <hr>
-                    <p>Прикрепленное изображение: <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">{{$task->attachments}}</button> </p>
+                    <p>Прикрепленное изображение: <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">{{$task->attachments}}</button>
+                        <a href="#" data-toggle="modal" data-target="#changePhoto">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                     </p>
 
                 </div>
                 <div class="col-md-4 col-sm-11" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);margin: 4px 15px;padding: 10px 10px; float: right;">
@@ -159,7 +169,7 @@
                             </select>
                             <br>
                             <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
-                            <button class="btn btn-success">Отправить</button>
+                            <button class="btn btn-success">Изменить</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
@@ -188,7 +198,7 @@
                             </select>
                             <br>
                             <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
-                            <button class="btn btn-success">Отправить</button>
+                            <button class="btn btn-success">Изменить</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
@@ -218,7 +228,38 @@
                             </select>
                             <br>
                             <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
-                            <button class="btn btn-success">Отправить</button>
+                            <button class="btn btn-success">Изменить</button>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        {{--Изменение локации--}}
+        <div class="modal fade" id="changeLocation" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Выбор локации</h4>
+                    </div>
+                    <div class="modal-body">
+                        {!! Form::open(['route' => ['tasks.update', $task->id], 'method' => 'PUT']) !!}
+                        <div class="form-group">
+                            <label for="assigned_id">Локация:</label>
+                            <br>
+                            <select class="form-control" id="location_id" name="location_id">
+                                @foreach($locations as $location)
+                                    <option value="{{$location->id}}">{{$location->name}}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
+                            <button class="btn btn-success">Изменить</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
@@ -244,7 +285,7 @@
                             <textarea name="description" id="description" rows="5" class="form-control">{{  $task->description }}</textarea>
                             <br>
                             <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
-                            <button class="btn btn-success">Отправить</button>
+                            <button class="btn btn-success">Изменить</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
@@ -252,6 +293,35 @@
                 </div>
             </div>
         </div>
+
+
+
+        {{--Изменение изображения--}}
+        <div class="modal fade" id="changePhoto" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Изменение описания</h4>
+                    </div>
+                    <div class="modal-body">
+                        {!! Form::open(['route' => ['tasks.update', $task->id], 'method' => 'PUT', 'files' => true]) !!}
+                        <div class="form-group">
+                            <label for="description">Прикрепленное изображение:</label>
+                            <br>
+                            <label for="photo">Изображение:</label>
+                               <input type="file" class="btn btn-success" id="photo" name="photo">
+                            <br>
+                            <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
+                            <button class="btn btn-success">Изменить</button>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
 
         <!--Модальное окно для просмотра истории изменений-->

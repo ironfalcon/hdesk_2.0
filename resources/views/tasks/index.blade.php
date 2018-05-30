@@ -282,12 +282,12 @@
         let massPopChart = new Chart(myChart, {
             type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
             data:{
-                labels:['Созданно', 'Выполненно'],
+                labels:['Созданно мной', 'Закрыто'],
                 datasets:[{
                     label:'Заявки',
                     data:[
-                        617594,
-                        181045
+                        {{$user_created_task}},
+                        {{$user_closed_task}}
                     ],
                     //backgroundColor:'green',
                     backgroundColor:[
