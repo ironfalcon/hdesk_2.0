@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-    v
+
     <!-- Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <!-- fonts -->
@@ -34,10 +34,12 @@ body{
     background-image: url('http://127.0.0.1:8000/backgrounds/06.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     @else
     background-image: url('http://127.0.0.1:8000/backgrounds/{{Auth::user()->bg_image}}');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     @endguest
 }
 form{
@@ -196,7 +198,7 @@ form{
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}" style="color:black;">Войти</a></li>
-                            <li><a href="{{ route('register') }}" style="color:black;">Регистрация</a></li>
+                            {{--<li><a href="{{ route('register') }}" style="color:black;">Регистрация</a></li>--}}
                         @else
 
                             <li class="dropdown" >

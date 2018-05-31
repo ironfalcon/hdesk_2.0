@@ -14,6 +14,7 @@ use App\Http\Requests\createTaskRequest;
 use illuminate\Foundation\Validation\ValidatesRequests;
 use Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Image;
 use App\Comment;
 use Illuminate\Pagination;
@@ -190,6 +191,16 @@ class TasksController extends Controller
                 $task->close_date = Carbon::now('Europe/Samara');
                 $workLog->action = $workLog->action." ЗАЯВКА ЗАКРЫТА";
             }
+            // отправка письма пользователю
+            $task_name = $task->title;
+            $data = array('task_name'=> $task_name, 'status' => $status);
+
+            Mail::send('mail', $data, function($message) {
+                $message->to('ironfalcon@yandex.ru', 'Что то еще')->subject
+                ('Изменение статуса заявки');
+                $message->from('ironfalcon@yandex.ru','Служба технической поддержки H-desk');
+            });
+
         }
         if($request->assigned_id) {
             $old_assigned = $task->user($task->assigned_id);
