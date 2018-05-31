@@ -31,7 +31,7 @@ body{
     font-family: 'Roboto', sans-serif;
 
     @guest
-    background-image: url('http://127.0.0.1:8000/backgrounds/06.jpg');
+    background-image: url('http://127.0.0.1:8000/logo/logo.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

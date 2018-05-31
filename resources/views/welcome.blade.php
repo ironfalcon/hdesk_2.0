@@ -64,23 +64,23 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-image: url('http://127.0.0.1:8000/logo/logo.png');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Главная</a>
                     @else
-                        <a href="{{ route('login') }}">Войти</a>
-                        <a href="{{ route('register') }}">Регистрация</a>
+                        <a href="{{ route('login') }}" style="color: #090909;background-color:rgba(240,240,240,.5);padding: 10px 10px;">Войти</a>
+                        {{--<a href="{{ route('register') }}">Регистрация</a>--}}
                     @endauth
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    H-desk
-                </div>
+            {{--<div class="content">--}}
+                {{--<div class="title m-b-md">--}}
+                    {{--H-desk--}}
+                {{--</div>--}}
 
                 
             </div>

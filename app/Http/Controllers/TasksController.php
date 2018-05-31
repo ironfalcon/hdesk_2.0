@@ -198,7 +198,7 @@ class TasksController extends Controller
             Mail::send('mail', $data, function($message) {
                 $message->to('ironfalcon@yandex.ru', 'Что то еще')->subject
                 ('Изменение статуса заявки');
-                $message->from('ironfalcon@yandex.ru','Служба технической поддержки H-desk');
+                $message->from('h-desk.robot@yandex.ru','Служба технической поддержки H-desk');
             });
 
         }
