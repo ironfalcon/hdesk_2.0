@@ -185,20 +185,23 @@ class TasksController extends Controller
             $status = $status->name;
             $user = User::find($request->user_id);
             $user = $user->name;
+            $user_to_mail = User::find($task->creator_id);
+            $user_mail = $user_to_mail->email;
             $workLog->action = "Пользователь $user изменил статус c <$old_status> на  <$status>";
             $task->status_id = $request->status_id;
             if($request->status_id == 4){
                 $task->close_date = Carbon::now('Europe/Samara');
                 $workLog->action = $workLog->action." ЗАЯВКА ЗАКРЫТА";
             }
+
             // отправка письма пользователю
             $task_name = $task->title;
             $data = array('task_name'=> $task_name, 'status' => $status);
 
-            Mail::send('mail', $data, function($message) {
-                $message->to('ironfalcon@yandex.ru', 'Что то еще')->subject
+            Mail::send('mail', $data, function($message) use($user_mail) {
+                $message->to($user_mail, 'Что то еще')->subject
                 ('Изменение статуса заявки');
-                $message->from('h-desk.robot@yandex.ru','Служба технической поддержки H-desk');
+                $message->from('ironfalcon@yandex.ru','Служба технической поддержки H-desk');
             });
 
         }

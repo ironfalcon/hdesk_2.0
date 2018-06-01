@@ -35,6 +35,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+
     @else
     background-image: url('http://127.0.0.1:8000/backgrounds/{{Auth::user()->bg_image}}');
     background-repeat: no-repeat;

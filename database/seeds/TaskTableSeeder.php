@@ -14,7 +14,7 @@ class TaskTableSeeder extends Seeder
     {
         DB::table('tasks')->insert([
         'title' => 'не подключается wi-fi',
-        'description' => 'описание проблемы и подробности',
+        'description' => 'описание проблемы и подробности неисправности',
             'priority_id' => 1,
             'create_date' => Carbon::now('Europe/Samara'),
             'update_date' => '',
@@ -37,7 +37,7 @@ class TaskTableSeeder extends Seeder
             'close_date' => '',
             'location_id' => 2,
             'status_id' => 2,
-            'assigned_id' => 2,
+            'assigned_id' => 1,
             'creator_id' => 3,
             'comments_id' => 1,
             'attachments' => '',
