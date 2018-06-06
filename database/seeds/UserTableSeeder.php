@@ -74,7 +74,7 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Администратор1',
+            'name' => 'Админ_1',
             'permission_id' => 3,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
@@ -84,7 +84,7 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Администратор2',
+            'name' => 'Админ_2',
             'permission_id' => 3,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
@@ -94,7 +94,7 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Администратор3',
+            'name' => 'Админ_3',
             'permission_id' => 3,
             'email' => str_random(3).'@gmail.com',
             'password' => bcrypt(123456),
